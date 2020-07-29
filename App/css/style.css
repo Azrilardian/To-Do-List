@@ -1,0 +1,295 @@
+html body * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 5px;
+    background-color: whitesmoke;
+    font-family: "Poppins", sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+}
+
+textarea {
+    border: none;
+}
+
+.container {
+    background-color: teal;
+    display: flex;
+    height: 96vh;
+    filter: drop-shadow(3px 2px 5px rgb(165, 165, 165));
+}
+
+.left,
+.right {
+    padding: 10px;
+}
+
+.left {
+    background-color: white;
+    width: 30%;
+}
+
+.left button {
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    border: none;
+    background-color: whitesmoke;
+    font-size: 50px;
+    color: #868686;
+}
+
+.left button:focus {
+    background-color: #ebebeb;
+}
+
+.right {
+    width: 70%;
+    position: relative;
+}
+
+.right>span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgba(0, 0, 0, 0.281);
+    user-select: none;
+}
+
+.right p {
+    margin-top: -7px;
+}
+
+.right header {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.opt {
+    position: relative;
+    flex: 1;
+    height: 35px;
+    background-color: blue;
+}
+
+#kategori1,
+#kategori2,
+#kategori3 {
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
+    border: none;
+    padding-left: 8px;
+}
+
+.opt1 {
+    margin-right: 7px;
+}
+
+.opt3 {
+    margin-left: 7px;
+}
+
+.opt::after {
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    background-color: white;
+    pointer-events: none;
+    color: #575757;
+}
+
+.opt::after,
+.color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*? LIST CONTAINER  */
+
+.list-container {
+    width: 100%;
+}
+
+.list-container .list {
+    width: 100%;
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    padding: 0 7px;
+    height: 45px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    filter: drop-shadow(2px 1px 3px rgb(107, 107, 107));
+    user-select: none;
+}
+
+.list-container .list p {
+    margin: 0;
+}
+
+.list-container .list span {
+    height: 70%;
+    font-size: 12px;
+}
+
+.list-container .list span i:first-child {
+    background-color: #95ff95;
+}
+
+.list span,
+.list i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-container .list i {
+    width: 70px;
+    height: 100%;
+    background-color: #ff6e6e;
+    cursor: pointer;
+}
+
+.list-container .list i:first-child {
+    margin-right: 5px;
+}
+
+
+/*? CREATE LIST  */
+
+.create {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: whitesmoke;
+    width: 400px;
+    overflow: hidden;
+    opacity: 0;
+    user-select: none;
+    visibility: hidden;
+    transition: .1s ease-in-out;
+}
+
+.create.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.create header {
+    padding: 0px 10px;
+    text-align: right;
+    background-color: #ff6262;
+}
+
+.create header p {
+    font-size: 20px;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: -5px;
+    cursor: pointer;
+}
+
+.create .margin {
+    margin: 20px 10px;
+}
+
+.create p {
+    font-size: 13px;
+}
+
+.create textarea {
+    padding: 10px;
+    width: 100%;
+    margin: 5px 0;
+    height: 100px;
+    font-family: "Poppins", sans-serif;
+}
+
+.create .dateAndColor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create .color {
+    width: 100%;
+    justify-content: left;
+}
+
+.create .color span {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.create .color span:first-child {
+    background-color: yellow;
+    margin: 0;
+}
+
+.create .color span:nth-child(2) {
+    background-color: yellow;
+}
+
+.create .color span:nth-child(3) {
+    background-color: green;
+}
+
+.create .color span:nth-child(4) {
+    background-color: blue;
+}
+
+.create .color span:nth-child(5) {
+    background-color: black;
+}
+
+.create .color span:last-child {
+    background-color: white;
+}
+
+.create .date p {
+    background-color: white;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.create button {
+    width: 100%;
+    padding: 8px 0;
+    margin-top: 10px;
+    background-color: #e0e0e0;
+    border: none;
+    transition: .2s ease;
+}
+
+.create button:hover {
+    background-color: #d4d4d4;
+}

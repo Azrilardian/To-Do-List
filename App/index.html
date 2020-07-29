@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6163288e05.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/v4-shims.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>To Do List 2</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <button>+</button>
+        </div>
+        <div class="right">
+            <span><h2>To Do List v2</h2><p>Azrilardian</p></span>
+            <header>
+                <div class="opt1 opt">
+                    <select id="kategori1">
+                        <option value="Semua">Semua</option>
+                        <option value="Selesai">Selesai</option>
+                        <option value="Belum Selesai">Belum Selesai</option>
+                    </select>
+                </div>
+                <div class="opt2 opt">
+                    <select id="kategori2">
+                        <option value="Berdasarkan Warna">Semua Warna</option>
+                        <option value="Kuning">Kuning</option>
+                        <option value="Hijau">Hijau</option>
+                        <option value="Merah">Merah</option>
+                        <option value="Putih">Putih</option>
+                        <option value="Hitam">Hijau</option>
+                        <option value="Biru">Biru</option>
+                    </select>
+                </div>
+                <div class="opt3 opt">
+                    <select id="kategori3">
+                        <option value="Semua">Semua Tanggal</option>
+                        <option value="Selesai">Baru dibuat</option>
+                        <option value="Belum Selesai">Lama dibuat</option>
+                    </select>
+                </div>
+            </header>
+            <div class="list-container"></div>
+        </div>
+        <div class="create">
+            <header>
+                <p>x</p>
+            </header>
+            <div class="margin">
+                <div class="input">
+                    <p>Buat List</p>
+                    <textarea placeholder="Kegiatan hari ini ?"></textarea>
+                </div>
+                <div class="dateAndColor">
+                    <div class="color">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="date">
+                        <p>9:22, 7/9/2020</p>
+                    </div>
+                </div>
+                <button id="create">Create List</button>
+            </div>
+        </div>
+
+        <script src="js/script.js"></script>
+</body>
+
+</html>
