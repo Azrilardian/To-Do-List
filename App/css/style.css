@@ -8,6 +8,7 @@ body {
     padding: 5px;
     background-color: whitesmoke;
     font-family: "Poppins", sans-serif;
+    user-select: none;
 }
 
 button {
@@ -16,19 +17,15 @@ button {
 
 button:focus,
 select:focus,
-textarea:focus {
+input:focus {
     outline: none;
 }
 
-textarea {
-    border: none;
-}
-
 .container {
-    background-color: teal;
+    background: linear-gradient(to bottom right, #087979, #0c4d4d);
     display: flex;
     height: 96vh;
-    filter: drop-shadow(3px 2px 5px rgb(165, 165, 165));
+    filter: drop-shadow(3px 2px 5px #a5a5a5);
 }
 
 .left,
@@ -67,7 +64,6 @@ textarea {
     transform: translate(-50%, -50%);
     text-align: center;
     color: rgba(0, 0, 0, 0.281);
-    user-select: none;
 }
 
 .right p {
@@ -83,7 +79,6 @@ textarea {
     position: relative;
     flex: 1;
     height: 35px;
-    background-color: blue;
 }
 
 #kategori1,
@@ -91,9 +86,9 @@ textarea {
 #kategori3 {
     width: 100%;
     height: 100%;
-    background-color: whitesmoke;
     border: none;
     padding-left: 8px;
+    cursor: pointer;
 }
 
 .opt1 {
@@ -133,7 +128,7 @@ textarea {
 .list-container .list {
     width: 100%;
     display: inline-block;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     padding: 0 7px;
     height: 45px;
     margin-bottom: 5px;
@@ -142,21 +137,33 @@ textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    filter: drop-shadow(2px 1px 3px rgb(107, 107, 107));
-    user-select: none;
+    filter: drop-shadow(2px 1px 3px #6b6b6b);
+    cursor: pointer;
+}
+
+.list.completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.list.remove {
+    opacity: 0;
+    transition: .2s ease;
+}
+
+.list-container .list:hover i {
+    opacity: 1;
 }
 
 .list-container .list p {
     margin: 0;
+    pointer-events: none;
+    font-weight: 500;
 }
 
 .list-container .list span {
     height: 70%;
     font-size: 12px;
-}
-
-.list-container .list span i:first-child {
-    background-color: #95ff95;
 }
 
 .list span,
@@ -166,15 +173,19 @@ textarea {
     align-items: center;
 }
 
+.list-container .list i:first-child {
+    background: linear-gradient(to right, #1d86cc, #33a0e9);
+    margin-right: 8px;
+}
+
 .list-container .list i {
     width: 70px;
     height: 100%;
-    background-color: #ff6e6e;
+    background: linear-gradient(to right, #ce3232, #da3d3d);
     cursor: pointer;
-}
-
-.list-container .list i:first-child {
-    margin-right: 5px;
+    filter: drop-shadow(2px 1px 2px #16161691);
+    opacity: 0;
+    transition: .05s ease;
 }
 
 
@@ -201,9 +212,9 @@ textarea {
 }
 
 .create header {
-    padding: 0px 10px;
+    padding: 3px 10px;
     text-align: right;
-    background-color: #ff6262;
+    background-color: #ff5050;
 }
 
 .create header p {
@@ -218,16 +229,12 @@ textarea {
     margin: 20px 10px;
 }
 
-.create p {
-    font-size: 13px;
-}
-
-.create textarea {
+.create input {
     padding: 10px;
     width: 100%;
-    margin: 5px 0;
-    height: 100px;
-    font-family: "Poppins", sans-serif;
+    margin: 5px 0 10px 0;
+    padding-bottom: 60px;
+    border: none;
 }
 
 .create .dateAndColor {
@@ -249,28 +256,33 @@ textarea {
 }
 
 .create .color span:first-child {
-    background-color: yellow;
-    margin: 0;
+    background-color: #ffffa9;
+    margin-left: 0;
+    margin-right: 5px;
 }
 
 .create .color span:nth-child(2) {
-    background-color: yellow;
+    background-color: #b4ffb4;
 }
 
 .create .color span:nth-child(3) {
-    background-color: green;
+    background-color: #a3ceff;
 }
 
 .create .color span:nth-child(4) {
-    background-color: blue;
+    background-color: #6d6d6d;
 }
 
 .create .color span:nth-child(5) {
-    background-color: black;
+    background-color: #d3d3d3;
 }
 
 .create .color span:last-child {
-    background-color: white;
+    background-color: #ffffff;
+}
+
+.create .color span.active {
+    border: 1px solid #292929;
 }
 
 .create .date p {
@@ -278,6 +290,7 @@ textarea {
     padding: 5px;
     width: 100px;
     text-align: center;
+    font-size: 13px;
     font-weight: 500;
 }
 
