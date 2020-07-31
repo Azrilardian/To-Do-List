@@ -139,6 +139,7 @@ input:focus {
     align-items: center;
     filter: drop-shadow(2px 1px 3px #6b6b6b);
     cursor: pointer;
+    transition: .2s ease;
 }
 
 .list.completed {
@@ -152,7 +153,7 @@ input:focus {
 }
 
 .list-container .list:hover i {
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 .list-container .list p {

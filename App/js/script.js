@@ -7,6 +7,7 @@ function toDoListApp() {
     const closeIcon = document.querySelector('.create header p');
     const btnCreateList = document.querySelector('#create');
     const listColor = document.querySelectorAll('.color span');
+    const completedUncompleted = document.querySelector('#kategori1');
 
     // Listener
     btnShowInput.addEventListener('click', () => showInputAlert(create, input));
@@ -61,6 +62,10 @@ function toDoListApp() {
         if (target.classList.contains('fa-trash')) removeList(target);
     })
 
+    completedUncompleted.addEventListener('click', e => fillterCompletedUncompleted(e));
+
+
+
     // Function
     const showInputAlert = (e, i) => {
         e.classList.toggle('active');
@@ -97,5 +102,22 @@ function toDoListApp() {
                         <i class="fas fa-trash"></i>
                     </span>`
     };
-}
+
+    function fillterCompletedUncompleted(e) {
+        const lists = document.querySelectorAll('.list');
+        lists.forEach(list => {
+            switch (e.target.value) {
+                case "Semua":
+                    list.style.display = 'flex';
+                    break;
+                case "Selesai":
+                    list.classList.contains('completed') ? list.style.display = 'flex' : list.style.display = 'none';
+                    break;
+                case "Belum Selesai":
+                    !list.classList.contains('completed') ? list.style.display = 'flex' : list.style.display = 'none';
+                    break;
+            };
+        });
+    };
+};
 toDoListApp();
