@@ -1,5 +1,5 @@
 function toDoListApp() {
-	// Variabel
+	//! Variabel
 	const create = document.querySelector(".create");
 	const input = document.querySelector(".input input");
 	const btnShowInput = document.querySelector(".left button");
@@ -8,73 +8,87 @@ function toDoListApp() {
 	const listColor = document.querySelectorAll(".color span");
 	let colorName = "white";
 
-	// Listener
+	//! Listener
+
+	//? On Button createList Click
 	btnShowInput.addEventListener("click", () => showInputAlert(create, input));
+
 	input.addEventListener("keyup", (e) => {
 		if (e.keyCode === 13) {
-			createList(input);
+			createList(input.value);
 			closeList(create, input);
 		}
 	});
+
+	//? On Button addList Click
 	btnCreateList.addEventListener("click", () => {
-		createList(input);
+		createList(input.value);
 		closeList(create, input);
 	});
-	closeIcon.addEventListener("click", () => closeList(create, input));
 	listColor.forEach((color) =>
 		color.addEventListener("click", function () {
 			changeListColor(color);
 		})
 	);
+
+	//? On Button Close Icon Click
+	closeIcon.addEventListener("click", () => closeList(create, input));
+
+	//? Document Listener
 	document.addEventListener("click", (e) => {
 		const target = e.target;
-		if (target.classList.contains("list")) target.classList.toggle("completed");
+		if (target.classList.contains("list")) {
+			const status = target.classList.toggle("completed");
+			syncWithLocalStorage("UPDATE", target.innerText, status);
+		}
 		if (target.classList.contains("fa-trash")) removeList(target);
 		if (target.id == "kategori1") fillterCompletedUncompleted(e);
 		if (target.id == "kategori2") fillterByColor(e);
 	});
 
-	// Function
+	//! Function
+
 	const showInputAlert = (e, i) => {
 		e.classList.toggle("active");
 		setTimeout(() => i.focus(), 15);
 	};
+
+	function createList(inputValue, status) {
+		if (inputValue === "") return;
+		else {
+			const listContainer = document.querySelector(".list-container");
+			let isDone = status ? "completed" : "";
+			listContainer.innerHTML += list(inputValue, isDone);
+			syncWithLocalStorage("ADD", inputValue, status);
+		}
+	}
 
 	function closeList(create, input) {
 		create.classList.remove("active");
 		input.value = "";
 	}
 
-	function createList(inputValue) {
-		if (inputValue.value === "") return;
-		else {
-			const listContainer = document.querySelector(".list-container");
-			const div = document.createElement("div");
-			div.classList.add("list", colorName);
-			div.style.backgroundColor = input.style.backgroundColor;
-			div.innerHTML = list(inputValue.value);
-			listContainer.appendChild(div);
-		}
-	}
-
 	function removeList(target) {
 		let list = target.parentElement.parentElement;
 		list.classList.add("remove");
 		list.addEventListener("transitionend", () => list.remove());
+		syncWithLocalStorage("DELETE", list.innerText.trim());
 	}
 
-	function list(e) {
-		return `<p>${e}</p>
-                <span>${getDate()}</span>
-                <span>
-                    <i class="fas fa-pen"></i>
-                    <i class="fas fa-trash"></i>
-                </span>`;
+	function list(e, status) {
+		return `
+		<div class="list ${colorName} ${status}" style="background-color=${input.style.backgroundColor}">
+			<p>${e}</p>
+			<span>${getDate()}</span>
+			<span>
+				<i class="fas fa-pen"></i>
+				<i class="fas fa-trash"></i>
+			</span>
+		</div>`;
 	}
 
 	function fillterCompletedUncompleted(e) {
 		const lists = document.querySelectorAll(".list");
-
 		lists.forEach((list) => {
 			switch (e.target.value) {
 				case "Semua":
@@ -163,11 +177,41 @@ function toDoListApp() {
 	}
 
 	function getDate() {
-		const pforDate = document.querySelector(".date p");
-		const date = new Date();
-		pforDate.textContent = date.toDateString();
-		return date.toDateString();
+		const pForDate = document.querySelector(".date p");
+		let today = new Date();
+		today = String(today.toLocaleString());
+		pForDate.innerHTML = today;
+		return today;
 	}
 	getDate();
+
+	//? Create a localStorage
+
+	const STORAGE_TODO = "STORAGE TODO";
+	let todos = {};
+	function syncWithLocalStorage(activity, item, status = false) {
+		switch (activity) {
+			case "ADD":
+			case "UPDATE":
+				todos[item] = status;
+				break;
+			case "DELETE":
+				delete todos[item];
+				break;
+			default:
+				break;
+		}
+
+		localStorage.setItem(STORAGE_TODO, JSON.stringify(todos));
+		return;
+	}
+
+	const todoFromLocal = localStorage.getItem(STORAGE_TODO);
+	if (todoFromLocal) {
+		const todos = JSON.parse(todoFromLocal);
+		for (let key in todos) {
+			createList(key, todos[key]);
+		}
+	}
 }
 toDoListApp();
