@@ -1,0 +1,38 @@
+{
+	"name": "todolist2",
+	"version": "1.0.0",
+	"description": "Aplikasi To Do List 2 adalah pengembangan dari versi To Do List Sederhana",
+	"main": "App/js/index.js",
+	"scripts": {
+		"build": "webpack --config webpack.prod.js",
+		"start-dev": "webpack-dev-server --config webpack.dev.js --open"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Azrilardian/To-Do-List.git"
+	},
+	"keywords": [
+		"To",
+		"Do",
+		"List",
+		"2"
+	],
+	"author": "Azrilardian",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Azrilardian/To-Do-List/issues"
+	},
+	"homepage": "https://github.com/Azrilardian/To-Do-List#readme",
+	"dependencies": {
+		"moment": "^2.29.0"
+	},
+	"devDependencies": {
+		"css-loader": "^4.3.0",
+		"html-webpack-plugin": "^4.5.0",
+		"style-loader": "^1.3.0",
+		"webpack": "^4.44.2",
+		"webpack-cli": "^3.3.12",
+		"webpack-dev-server": "^3.11.0",
+		"webpack-merge": "^5.1.4"
+	}
+}
