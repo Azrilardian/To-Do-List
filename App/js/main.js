@@ -1,6 +1,7 @@
 import moment from "moment";
 function toDoListApp() {
 	//! Variabel
+
 	const create = document.querySelector(".create");
 	const input = document.querySelector(".input input");
 	const btnShowInput = document.querySelector(".left button");
@@ -40,7 +41,8 @@ function toDoListApp() {
 		const target = e.target;
 		if (target.classList.contains("list")) {
 			const status = target.classList.toggle("completed");
-			syncWithLocalStorage("UPDATE", target.innerText, status);
+			const color = target.style.backgroundColor;
+			syncWithLocalStorage("UPDATE", target.innerText, status, color);
 		}
 		if (target.classList.contains("fa-trash")) removeList(target);
 		if (target.id == "kategori1") fillterCompletedUncompleted(e);
@@ -54,13 +56,13 @@ function toDoListApp() {
 		setTimeout(() => i.focus(), 15);
 	};
 
-	function createList(inputValue, status) {
+	function createList(inputValue, status, toDoColor = color(), colorNameClass = colorName) {
 		if (inputValue === "") return;
 		else {
 			const listContainer = document.querySelector(".list-container");
 			let isDone = status ? "completed" : "";
-			listContainer.innerHTML += list(inputValue, isDone);
-			syncWithLocalStorage("ADD", inputValue, status);
+			listContainer.innerHTML += list(inputValue, isDone, toDoColor, colorNameClass);
+			syncWithLocalStorage("ADD", inputValue, status, toDoColor, colorNameClass);
 		}
 	}
 
@@ -76,9 +78,13 @@ function toDoListApp() {
 		syncWithLocalStorage("DELETE", list.innerText.trim());
 	}
 
-	function list(e, status) {
+	function color() {
+		return input.style.backgroundColor;
+	}
+
+	function list(e, status, color, colorNameClass) {
 		return `
-		<div class="list ${colorName} ${status}" style="background-color=${input.style.backgroundColor}">
+		<div class="list ${colorNameClass} ${status}" style="background-color: ${color}">
 			<p>${e}</p>
 			<span>${getDate()}</span>
 			<span>
@@ -185,15 +191,13 @@ function toDoListApp() {
 	}
 	getDate();
 
-	//? Create a localStorage
-
 	const STORAGE_TODO = "STORAGE TODO";
 	let todos = {};
-	function syncWithLocalStorage(activity, item, status = false) {
+	function syncWithLocalStorage(activity, item, status = false, color, classColor) {
 		switch (activity) {
 			case "ADD":
 			case "UPDATE":
-				todos[item] = status;
+				todos[item] = [status, color, classColor];
 				break;
 			case "DELETE":
 				delete todos[item];
@@ -206,12 +210,14 @@ function toDoListApp() {
 		return;
 	}
 
+	//? Get Todo and Create
 	const todoFromLocal = localStorage.getItem(STORAGE_TODO);
 	if (todoFromLocal) {
 		const todos = JSON.parse(todoFromLocal);
 		for (let key in todos) {
-			createList(key, todos[key]);
+			createList(key, todos[key][0], todos[key][1], todos[key][2]);
 		}
 	}
 }
-toDoListApp();
+
+export default toDoListApp;
