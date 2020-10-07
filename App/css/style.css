@@ -24,7 +24,7 @@ input:focus {
 .container {
 	background: linear-gradient(to bottom right, #087979, #0c4d4d);
 	display: flex;
-	height: 96vh;
+	min-height: 96vh;
 	filter: drop-shadow(3px 2px 5px #a5a5a5);
 }
 
@@ -315,4 +315,18 @@ input:focus {
 
 .create button:hover {
 	background-color: #d4d4d4;
+}
+
+@media (max-width: 576px) {
+	.container {
+		flex-direction: column;
+	}
+
+	.left {
+		height: 150px;
+	}
+	.left,
+	.right {
+		width: 100%;
+	}
 }
