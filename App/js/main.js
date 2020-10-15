@@ -1,4 +1,5 @@
 import moment from "moment";
+import {STORAGE_TODO, syncWithLocalStorage} from "./local-storage.js";
 function toDoListApp() {
 	//! Variabel
 
@@ -190,25 +191,6 @@ function toDoListApp() {
 		return today;
 	}
 	getDate();
-
-	const STORAGE_TODO = "STORAGE TODO";
-	let todos = {};
-	function syncWithLocalStorage(activity, item, status = false, color, classColor) {
-		switch (activity) {
-			case "ADD":
-			case "UPDATE":
-				todos[item] = [status, color, classColor];
-				break;
-			case "DELETE":
-				delete todos[item];
-				break;
-			default:
-				break;
-		}
-
-		localStorage.setItem(STORAGE_TODO, JSON.stringify(todos));
-		return;
-	}
 
 	//? Get Todo and Create
 	const todoFromLocal = localStorage.getItem(STORAGE_TODO);
