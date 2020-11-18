@@ -1,14 +1,24 @@
-html body * {
+@import "./left.css";
+@import "./right.css";
+
+:root {
+	--default-black-color: #222222;
+	--default-blue-color: #0a5ebe;
+	--blue-gradient: linear-gradient(to bottom right, #42abf1, #0a5ebe);
+}
+
+* {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
 
-body {
-	padding: 5px;
+html body {
+	padding: 20px;
 	background-color: whitesmoke;
 	font-family: "Poppins", sans-serif;
 	user-select: none;
+	height: 100vh;
 }
 
 button {
@@ -22,100 +32,11 @@ input:focus {
 }
 
 .container {
-	background: linear-gradient(to bottom right, #087979, #0c4d4d);
 	display: flex;
-	min-height: 96vh;
-	filter: drop-shadow(3px 2px 5px #a5a5a5);
-}
-
-.left,
-.right {
-	padding: 10px;
-}
-
-.left {
-	background-color: white;
-	width: 30%;
-}
-
-.left button {
-	width: 100%;
 	height: 100%;
-	padding: 10px 0;
-	border: none;
-	background-color: whitesmoke;
-	font-size: 50px;
-	color: #868686;
-}
-
-.left button:focus {
-	background-color: #ebebeb;
-}
-
-.right {
-	width: 70%;
-	position: relative;
-}
-
-.right > span {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	color: rgba(0, 0, 0, 0.281);
-}
-
-.right p {
-	margin-top: -7px;
-}
-
-.right header {
-	display: flex;
-	margin-bottom: 10px;
-}
-
-.opt {
-	position: relative;
-	flex: 1;
-	height: 35px;
-}
-
-#kategori1,
-#kategori2,
-#kategori3 {
-	width: 100%;
-	height: 100%;
-	border: none;
-	padding-left: 8px;
-	cursor: pointer;
-}
-
-.opt1 {
-	margin-right: 7px;
-}
-
-.opt3 {
-	margin-left: 7px;
-}
-
-.opt::after {
-	content: "\25BC";
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 100%;
-	width: 50px;
-	background-color: white;
-	pointer-events: none;
-	color: #575757;
-}
-
-.opt::after,
-.color {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	box-shadow: 3px 3px 15px #cccccc;
+	border-radius: 5px;
+	overflow: hidden;
 }
 
 /*? LIST CONTAINER  */

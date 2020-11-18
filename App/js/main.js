@@ -1,5 +1,5 @@
 import moment from "moment";
-import {STORAGE_TODO, syncWithLocalStorage} from "./local-storage.js";
+import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage.js";
 function toDoListApp() {
 	//! Variabel
 
