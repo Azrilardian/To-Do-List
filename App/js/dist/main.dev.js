@@ -45,6 +45,7 @@ function toDoListApp() {
   btnTampilkanListContainer.addEventListener("click", function () {
     return tampilkanListContainer();
   });
+  document.querySelector(".date p").textContent = (0, _moment["default"])().startOf("hour").fromNow();
 
   var tampilkanListContainer = function tampilkanListContainer() {
     create.classList.toggle("active");
@@ -69,7 +70,7 @@ function toDoListApp() {
   });
 
   var btnList = function btnList(e) {
-    return "\n\t\t<div class=\"list ".concat(e.warna, " ").concat(e.status, "\" style=\"background-color: ").concat(e.warna, "\">\n\t\t\t<p>").concat(e.isiList, "</p>\n\t\t\t<input>\n\t\t\t<span>").concat(getDate, "</span>\n\t\t\t<span>\n\t\t\t\t<i class=\"fas fa-pen edit\"></i>\n\t\t\t\t<i class=\"fas fa-trash hapus\"></i>\n\t\t\t</span>\n\t\t</div>");
+    return "\n\t\t<div class=\"list ".concat(e.warna, " ").concat(e.status, "\" style=\"background-color: ").concat(e.warna, "\">\n\t\t\t<p>").concat(e.isiList, "</p>\n\t\t\t<input>\n\t\t\t<span>").concat((0, _moment["default"])().startOf("hour").fromNow(), "</span>\n\t\t\t<span>\n\t\t\t\t<i class=\"fas fa-pen edit\"></i>\n\t\t\t\t<i class=\"fas fa-trash hapus\"></i>\n\t\t\t</span>\n\t\t</div>");
   };
 
   var tampilkanSemuaList = function tampilkanSemuaList(arr) {
@@ -356,14 +357,6 @@ function toDoListApp() {
   ======================================================================================================
   */
 
-  function getDate() {
-    var pForDate = document.querySelector(".date p");
-    var today = (0, _moment["default"])().startOf("hour").fromNow();
-    pForDate.textContent = today;
-    return today;
-  }
-
-  getDate();
   /*
   ======================================================================================================
   =============    STATEMENT - STATEMENT YANG BERHUBUNGAN DENGAN LOCAL STORAGAE    =====================

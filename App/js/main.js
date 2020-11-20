@@ -24,6 +24,7 @@ function toDoListApp() {
 	*/
 
 	btnTampilkanListContainer.addEventListener("click", () => tampilkanListContainer());
+	document.querySelector(".date p").textContent = moment().startOf("hour").fromNow();
 
 	const tampilkanListContainer = () => {
 		create.classList.toggle("active");
@@ -52,7 +53,7 @@ function toDoListApp() {
 		<div class="list ${e.warna} ${e.status}" style="background-color: ${e.warna}">
 			<p>${e.isiList}</p>
 			<input>
-			<span>${getDate}</span>
+			<span>${moment().startOf("hour").fromNow()}</span>
 			<span>
 				<i class="fas fa-pen edit"></i>
 				<i class="fas fa-trash hapus"></i>
@@ -313,14 +314,6 @@ function toDoListApp() {
 	=============                                  AKHIR                             ===================== 
 	======================================================================================================
 	*/
-
-	function getDate() {
-		const pForDate = document.querySelector(".date p");
-		const today = moment().startOf("hour").fromNow();
-		pForDate.textContent = today;
-		return today;
-	}
-	getDate();
 
 	/*
 	======================================================================================================
