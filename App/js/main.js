@@ -55,8 +55,8 @@ function toDoListApp() {
 			<input>
 			<span>${moment().startOf("hour").fromNow()}</span>
 			<span>
-				<i class="fas fa-pen edit"></i>
-				<i class="fas fa-trash hapus"></i>
+				<i class="lnr lnr-pencil edit"></i>
+				<i class="lnr lnr-trash hapus"></i>
 			</span>
 		</div>`;
 	};

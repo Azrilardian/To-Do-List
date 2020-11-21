@@ -70,7 +70,7 @@ function toDoListApp() {
   });
 
   var btnList = function btnList(e) {
-    return "\n\t\t<div class=\"list ".concat(e.warna, " ").concat(e.status, "\" style=\"background-color: ").concat(e.warna, "\">\n\t\t\t<p>").concat(e.isiList, "</p>\n\t\t\t<input>\n\t\t\t<span>").concat((0, _moment["default"])().startOf("hour").fromNow(), "</span>\n\t\t\t<span>\n\t\t\t\t<i class=\"fas fa-pen edit\"></i>\n\t\t\t\t<i class=\"fas fa-trash hapus\"></i>\n\t\t\t</span>\n\t\t</div>");
+    return "\n\t\t<div class=\"list ".concat(e.warna, " ").concat(e.status, "\" style=\"background-color: ").concat(e.warna, "\">\n\t\t\t<p>").concat(e.isiList, "</p>\n\t\t\t<input>\n\t\t\t<span>").concat((0, _moment["default"])().startOf("hour").fromNow(), "</span>\n\t\t\t<span>\n\t\t\t\t<i class=\"lnr lnr-pencil edit\"></i>\n\t\t\t\t<i class=\"lnr lnr-trash hapus\"></i>\n\t\t\t</span>\n\t\t</div>");
   };
 
   var tampilkanSemuaList = function tampilkanSemuaList(arr) {

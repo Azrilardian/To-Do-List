@@ -81,6 +81,12 @@ input:focus {
 	display: flex;
 }
 
+.list i {
+	font-size: 13px;
+	color: white;
+	font-weight: 700;
+}
+
 .list-container .list:hover i {
 	opacity: 1 !important;
 }
