@@ -11,8 +11,15 @@
 	background-color: whitesmoke;
 	color: #868686;
 	border: none;
-	font-size: 40px;
 	border-radius: 5px;
+}
+.left button span {
+	font-size: 40px;
+}
+.left button p {
+	font-size: 12px;
+	margin-top: 5px;
+	color: #868686;
 }
 
 .left button:focus {
