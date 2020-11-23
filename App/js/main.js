@@ -53,7 +53,7 @@ function toDoListApp() {
 		<div class="list ${e.warna} ${e.status}" style="background-color: ${e.warna}">
 			<p>${e.isiList}</p>
 			<input>
-			<span>${moment().startOf("hour").fromNow()}</span>
+			<span class="date">${moment().startOf("hour").fromNow()}</span>
 			<span>
 				<i class="lnr lnr-pencil edit"></i>
 				<i class="lnr lnr-trash hapus"></i>
