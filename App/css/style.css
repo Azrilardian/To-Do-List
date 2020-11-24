@@ -87,6 +87,12 @@ input:focus {
 	margin: 5px 0 10px 0;
 	padding-bottom: 60px;
 	border: none;
+	border-radius: 5px;
+}
+
+.create .input p {
+	font-size: 13px;
+	font-weight: 500;
 }
 
 .create .dateAndColor {
@@ -98,8 +104,17 @@ input:focus {
 .create .color {
 	justify-content: left;
 }
+
 .create .date p {
 	width: 100% !important;
+	background-color: white;
+	padding: 5px 10px;
+	color: #6d6d6d;
+	width: 100px;
+	text-align: center;
+	font-size: 13px;
+	font-weight: 500;
+	border-radius: 5px;
 }
 
 .create .color span {
@@ -107,6 +122,7 @@ input:focus {
 	height: 30px;
 	margin: 0 5px;
 	cursor: pointer;
+	border-radius: 5px;
 }
 
 .create .color span:first-child {
@@ -116,7 +132,7 @@ input:focus {
 }
 
 .create .color span:nth-child(2) {
-	background-color: #b4ffb4;
+	background-color: #96f596;
 }
 
 .create .color span:nth-child(3) {
@@ -124,7 +140,7 @@ input:focus {
 }
 
 .create .color span:nth-child(4) {
-	background-color: #6d6d6d;
+	background-color: #868686;
 }
 
 .create .color span:nth-child(5) {
@@ -137,15 +153,6 @@ input:focus {
 
 .create .color span.active {
 	border: 1px solid #292929;
-}
-
-.create .date p {
-	background-color: white;
-	padding: 5px;
-	width: 100px;
-	text-align: center;
-	font-size: 13px;
-	font-weight: 500;
 }
 
 .create button {

@@ -97,43 +97,37 @@ function toDoListApp() {
   };
 
   var changeListColor = function changeListColor(color) {
+    var changeColor = function changeColor(colorHex) {
+      input.style.backgroundColor = colorHex;
+      colorName = colorHex;
+      input.focus();
+    };
+
     var colorId = color.id;
 
     switch (colorId) {
       case "yellow":
-        input.style.backgroundColor = "#ffffa9";
-        colorName = "#ffffa9";
-        input.focus();
+        changeColor("#ffffa9");
         break;
 
       case "green":
-        input.style.backgroundColor = "#b4ffb4";
-        colorName = "#b4ffb4";
-        input.focus();
+        changeColor("#96f596");
         break;
 
       case "blue":
-        input.style.backgroundColor = "#a3ceff";
-        colorName = "#a3ceff";
-        input.focus();
+        changeColor("#a3ceff");
         break;
 
       case "black":
-        input.style.backgroundColor = "#6d6d6d";
-        colorName = "#6d6d6d";
-        input.focus();
+        changeColor("#868686");
         break;
 
       case "grey":
-        input.style.backgroundColor = "#d3d3d3";
-        colorName = "#d3d3d3";
-        input.focus();
+        changeColor("#d3d3d3");
         break;
 
       case "white":
-        input.style.backgroundColor = "#ffffff";
-        colorName = "#ffffff";
-        input.focus();
+        changeColor("#ffffff");
         break;
     }
 
