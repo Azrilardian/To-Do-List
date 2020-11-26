@@ -282,9 +282,9 @@ function toDoListApp() {
 				let semuaListFilter;
 				const filterList = (statusList, warnaList) => semuaList.filter((list) => list.status == statusList && list.warna == warnaList);
 				if (target.value == "Kuning") semuaListFilter = filterList("completed", "#ffffa9");
-				if (target.value == "Hijau") semuaListFilter = filterList("completed", "#b4ffb4");
+				if (target.value == "Hijau") semuaListFilter = filterList("completed", "#96f596");
 				if (target.value == "Biru") semuaListFilter = filterList("completed", "#a3ceff");
-				if (target.value == "Hitam") semuaListFilter = filterList("completed", "#6d6d6d");
+				if (target.value == "Hitam") semuaListFilter = filterList("completed", "#868686");
 				if (target.value == "Abu - abu") semuaListFilter = filterList("completed", "#d3d3d3");
 				if (target.value == "Putih") semuaListFilter = filterList("completed", "#ffffff");
 				tampilkanSemuaList(semuaListFilter);
@@ -292,7 +292,7 @@ function toDoListApp() {
 				let semuaListFilter;
 				const filterList = (statusList, warnaList) => semuaList.filter((list) => list.status == statusList && list.warna == warnaList);
 				if (target.value == "Kuning") semuaListFilter = filterList("uncompleted", "#ffffa9");
-				if (target.value == "Hijau") semuaListFilter = filterList("uncompleted", "#b4ffb4");
+				if (target.value == "Hijau") semuaListFilter = filterList("uncompleted", "#96f596");
 				if (target.value == "Biru") semuaListFilter = filterList("uncompleted", "#a3ceff");
 				if (target.value == "Hitam") semuaListFilter = filterList("uncompleted", "#6d6d6d");
 				if (target.value == "Abu - abu") semuaListFilter = filterList("uncompleted", "#d3d3d3");
