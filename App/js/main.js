@@ -1,4 +1,3 @@
-import moment from "moment";
 import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage.js";
 function toDoListApp() {
 	const create = document.querySelector(".create");
@@ -24,7 +23,6 @@ function toDoListApp() {
 	*/
 
 	btnTampilkanListContainer.addEventListener("click", () => tampilkanListContainer());
-	document.querySelector(".date p").textContent = moment().startOf("hour").fromNow();
 
 	const tampilkanListContainer = () => {
 		create.classList.toggle("active");
@@ -53,7 +51,6 @@ function toDoListApp() {
 		<div class="list ${e.warna} ${e.status}" style="background-color: ${e.warna}">
 			<p>${e.isiList}</p>
 			<input>
-			<span class="date">${moment().startOf("hour").fromNow()}</span>
 			<span>
 				<i class="lnr lnr-pencil edit"></i>
 				<i class="lnr lnr-trash hapus"></i>
@@ -250,16 +247,39 @@ function toDoListApp() {
 	======================================================================================================
 	*/
 
-	const urutkanList = () => {
-		let status = "Semua";
-		right.addEventListener("click", (e) => {
-			const target = e.target;
-			if (target.id == "kategori1") fillterCompletedUncompleted(target);
-			if (target.id == "kategori2") fillterByColor(target);
+	const aktifasiOption = () => {
+		const optSelected = document.querySelectorAll(".opt-selected");
+		const optGroup = document.querySelectorAll(".opt-group");
+		const optSelect = document.querySelectorAll(".opt-select");
+
+		const hideOpt = () => optGroup.forEach((e) => e.classList.remove("active"));
+
+		optSelected.forEach((e) => {
+			e.addEventListener("click", function () {
+				hideOpt();
+				this.nextElementSibling.classList.toggle("active");
+			});
 		});
 
+		optSelect.forEach((e) =>
+			e.addEventListener("click", function () {
+				this.parentElement.previousElementSibling.textContent = e.textContent;
+				hideOpt();
+			})
+		);
+	};
+
+	aktifasiOption();
+
+	const urutkanList = () => {
+		let status = "Semua";
+		const kategori1 = document.querySelectorAll("#kategori1");
+		const kategori2 = document.querySelectorAll("#kategori2");
+		kategori1.forEach((e) => e.addEventListener("click", (event) => fillterCompletedUncompleted(event.target)));
+		kategori2.forEach((e) => e.addEventListener("click", (event) => fillterByColor(event.target)));
+
 		function fillterCompletedUncompleted(target) {
-			switch (target.value) {
+			switch (target.textContent) {
 				case "Semua":
 					tampilkanSemuaList(semuaList);
 					break;
@@ -277,26 +297,39 @@ function toDoListApp() {
 		}
 
 		function fillterByColor(target) {
-			if (status == "Semua" && target.value == "Berdasarkan Warna") tampilkanSemuaList(semuaList);
-			else if (status == "Selesai") {
+			if (status == "Semua" && target.textContent == "Semua Warna") tampilkanSemuaList(semuaList);
+			else if (status == "Semua") {
+				let semuaListFilter;
+				const filterList = (warnaList) => semuaList.filter((list) => list.warna == warnaList);
+				if (target.textContent == "Semua Warna") return;
+				if (target.textContent == "Kuning") semuaListFilter = filterList("#ffffa9");
+				if (target.textContent == "Hijau") semuaListFilter = filterList("#96f596");
+				if (target.textContent == "Biru") semuaListFilter = filterList("#a3ceff");
+				if (target.textContent == "Hitam") semuaListFilter = filterList("#868686");
+				if (target.textContent == "Abu - abu") semuaListFilter = filterList("#d3d3d3");
+				if (target.textContent == "Putih") semuaListFilter = filterList("#ffffff");
+				tampilkanSemuaList(semuaListFilter);
+			} else if (status == "Selesai") {
 				let semuaListFilter;
 				const filterList = (statusList, warnaList) => semuaList.filter((list) => list.status == statusList && list.warna == warnaList);
-				if (target.value == "Kuning") semuaListFilter = filterList("completed", "#ffffa9");
-				if (target.value == "Hijau") semuaListFilter = filterList("completed", "#b4ffb4");
-				if (target.value == "Biru") semuaListFilter = filterList("completed", "#a3ceff");
-				if (target.value == "Hitam") semuaListFilter = filterList("completed", "#6d6d6d");
-				if (target.value == "Abu - abu") semuaListFilter = filterList("completed", "#d3d3d3");
-				if (target.value == "Putih") semuaListFilter = filterList("completed", "#ffffff");
+				if (target.textContent == "Semua Warna") semuaListFilter = semuaList.filter((list) => list.status == "completed");
+				if (target.textContent == "Kuning") semuaListFilter = filterList("completed", "#ffffa9");
+				if (target.textContent == "Hijau") semuaListFilter = filterList("completed", "#96f596");
+				if (target.textContent == "Biru") semuaListFilter = filterList("completed", "#a3ceff");
+				if (target.textContent == "Hitam") semuaListFilter = filterList("completed", "#868686");
+				if (target.textContent == "Abu - abu") semuaListFilter = filterList("completed", "#d3d3d3");
+				if (target.textContent == "Putih") semuaListFilter = filterList("completed", "#ffffff");
 				tampilkanSemuaList(semuaListFilter);
 			} else if (status == "Belum Selesai") {
 				let semuaListFilter;
 				const filterList = (statusList, warnaList) => semuaList.filter((list) => list.status == statusList && list.warna == warnaList);
-				if (target.value == "Kuning") semuaListFilter = filterList("uncompleted", "#ffffa9");
-				if (target.value == "Hijau") semuaListFilter = filterList("uncompleted", "#b4ffb4");
-				if (target.value == "Biru") semuaListFilter = filterList("uncompleted", "#a3ceff");
-				if (target.value == "Hitam") semuaListFilter = filterList("uncompleted", "#6d6d6d");
-				if (target.value == "Abu - abu") semuaListFilter = filterList("uncompleted", "#d3d3d3");
-				if (target.value == "Putih") semuaListFilter = filterList("uncompleted", "#ffffff");
+				if (target.textContent == "Semua Warna") semuaListFilter = semuaList.filter((list) => list.status == "uncompleted");
+				if (target.textContent == "Kuning") semuaListFilter = filterList("uncompleted", "#ffffa9");
+				if (target.textContent == "Hijau") semuaListFilter = filterList("uncompleted", "#96f596");
+				if (target.textContent == "Biru") semuaListFilter = filterList("uncompleted", "#a3ceff");
+				if (target.textContent == "Hitam") semuaListFilter = filterList("uncompleted", "#868686");
+				if (target.textContent == "Abu - abu") semuaListFilter = filterList("uncompleted", "#d3d3d3");
+				if (target.textContent == "Putih") semuaListFilter = filterList("uncompleted", "#ffffff");
 				tampilkanSemuaList(semuaListFilter);
 			}
 		}

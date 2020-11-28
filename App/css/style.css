@@ -102,7 +102,9 @@ input:focus {
 }
 
 .create .color {
-	justify-content: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .create .date p {

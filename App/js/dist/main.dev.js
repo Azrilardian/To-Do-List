@@ -5,11 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _moment = _interopRequireDefault(require("moment"));
-
 var _localStorage = require("./local-storage.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -45,7 +41,6 @@ function toDoListApp() {
   btnTampilkanListContainer.addEventListener("click", function () {
     return tampilkanListContainer();
   });
-  document.querySelector(".date p").textContent = (0, _moment["default"])().startOf("hour").fromNow();
 
   var tampilkanListContainer = function tampilkanListContainer() {
     create.classList.toggle("active");
@@ -70,7 +65,7 @@ function toDoListApp() {
   });
 
   var btnList = function btnList(e) {
-    return "\n\t\t<div class=\"list ".concat(e.warna, " ").concat(e.status, "\" style=\"background-color: ").concat(e.warna, "\">\n\t\t\t<p>").concat(e.isiList, "</p>\n\t\t\t<input>\n\t\t\t<span class=\"date\">").concat((0, _moment["default"])().startOf("hour").fromNow(), "</span>\n\t\t\t<span>\n\t\t\t\t<i class=\"lnr lnr-pencil edit\"></i>\n\t\t\t\t<i class=\"lnr lnr-trash hapus\"></i>\n\t\t\t</span>\n\t\t</div>");
+    return "\n\t\t<div class=\"list ".concat(e.warna, " ").concat(e.status, "\" style=\"background-color: ").concat(e.warna, "\">\n\t\t\t<p>").concat(e.isiList, "</p>\n\t\t\t<input>\n\t\t\t<span>\n\t\t\t\t<i class=\"lnr lnr-pencil edit\"></i>\n\t\t\t\t<i class=\"lnr lnr-trash hapus\"></i>\n\t\t\t</span>\n\t\t</div>");
   };
 
   var tampilkanSemuaList = function tampilkanSemuaList(arr) {
@@ -275,16 +270,50 @@ function toDoListApp() {
   ======================================================================================================
   */
 
+  var aktifasiOption = function aktifasiOption() {
+    var optSelected = document.querySelectorAll(".opt-selected");
+    var optGroup = document.querySelectorAll(".opt-group");
+    var optSelect = document.querySelectorAll(".opt-select");
+
+    var hideOpt = function hideOpt() {
+      return optGroup.forEach(function (e) {
+        return e.classList.remove("active");
+      });
+    };
+
+    optSelected.forEach(function (e) {
+      e.addEventListener("click", function () {
+        hideOpt();
+        this.nextElementSibling.classList.toggle("active");
+      });
+    });
+    optSelect.forEach(function (e) {
+      return e.addEventListener("click", function () {
+        this.parentElement.previousElementSibling.textContent = e.textContent;
+        hideOpt();
+      });
+    });
+  };
+
+  aktifasiOption();
+
   var urutkanList = function urutkanList() {
     var status = "Semua";
-    right.addEventListener("click", function (e) {
-      var target = e.target;
-      if (target.id == "kategori1") fillterCompletedUncompleted(target);
-      if (target.id == "kategori2") fillterByColor(target);
+    var kategori1 = document.querySelectorAll("#kategori1");
+    var kategori2 = document.querySelectorAll("#kategori2");
+    kategori1.forEach(function (e) {
+      return e.addEventListener("click", function (event) {
+        return fillterCompletedUncompleted(event.target);
+      });
+    });
+    kategori2.forEach(function (e) {
+      return e.addEventListener("click", function (event) {
+        return fillterByColor(event.target);
+      });
     });
 
     function fillterCompletedUncompleted(target) {
-      switch (target.value) {
+      switch (target.textContent) {
         case "Semua":
           tampilkanSemuaList(semuaList);
           break;
@@ -308,23 +337,24 @@ function toDoListApp() {
     }
 
     function fillterByColor(target) {
-      if (status == "Semua" && target.value == "Berdasarkan Warna") tampilkanSemuaList(semuaList);else if (status == "Selesai") {
+      if (status == "Semua" && target.textContent == "Semua Warna") tampilkanSemuaList(semuaList);else if (status == "Semua") {
         var semuaListFilter;
 
-        var filterList = function filterList(statusList, warnaList) {
+        var filterList = function filterList(warnaList) {
           return semuaList.filter(function (list) {
-            return list.status == statusList && list.warna == warnaList;
+            return list.warna == warnaList;
           });
         };
 
-        if (target.value == "Kuning") semuaListFilter = filterList("completed", "#ffffa9");
-        if (target.value == "Hijau") semuaListFilter = filterList("completed", "#b4ffb4");
-        if (target.value == "Biru") semuaListFilter = filterList("completed", "#a3ceff");
-        if (target.value == "Hitam") semuaListFilter = filterList("completed", "#6d6d6d");
-        if (target.value == "Abu - abu") semuaListFilter = filterList("completed", "#d3d3d3");
-        if (target.value == "Putih") semuaListFilter = filterList("completed", "#ffffff");
+        if (target.textContent == "Semua Warna") return;
+        if (target.textContent == "Kuning") semuaListFilter = filterList("#ffffa9");
+        if (target.textContent == "Hijau") semuaListFilter = filterList("#96f596");
+        if (target.textContent == "Biru") semuaListFilter = filterList("#a3ceff");
+        if (target.textContent == "Hitam") semuaListFilter = filterList("#868686");
+        if (target.textContent == "Abu - abu") semuaListFilter = filterList("#d3d3d3");
+        if (target.textContent == "Putih") semuaListFilter = filterList("#ffffff");
         tampilkanSemuaList(semuaListFilter);
-      } else if (status == "Belum Selesai") {
+      } else if (status == "Selesai") {
         var _semuaListFilter;
 
         var _filterList = function _filterList(statusList, warnaList) {
@@ -333,13 +363,35 @@ function toDoListApp() {
           });
         };
 
-        if (target.value == "Kuning") _semuaListFilter = _filterList("uncompleted", "#ffffa9");
-        if (target.value == "Hijau") _semuaListFilter = _filterList("uncompleted", "#b4ffb4");
-        if (target.value == "Biru") _semuaListFilter = _filterList("uncompleted", "#a3ceff");
-        if (target.value == "Hitam") _semuaListFilter = _filterList("uncompleted", "#6d6d6d");
-        if (target.value == "Abu - abu") _semuaListFilter = _filterList("uncompleted", "#d3d3d3");
-        if (target.value == "Putih") _semuaListFilter = _filterList("uncompleted", "#ffffff");
+        if (target.textContent == "Semua Warna") _semuaListFilter = semuaList.filter(function (list) {
+          return list.status == "completed";
+        });
+        if (target.textContent == "Kuning") _semuaListFilter = _filterList("completed", "#ffffa9");
+        if (target.textContent == "Hijau") _semuaListFilter = _filterList("completed", "#96f596");
+        if (target.textContent == "Biru") _semuaListFilter = _filterList("completed", "#a3ceff");
+        if (target.textContent == "Hitam") _semuaListFilter = _filterList("completed", "#868686");
+        if (target.textContent == "Abu - abu") _semuaListFilter = _filterList("completed", "#d3d3d3");
+        if (target.textContent == "Putih") _semuaListFilter = _filterList("completed", "#ffffff");
         tampilkanSemuaList(_semuaListFilter);
+      } else if (status == "Belum Selesai") {
+        var _semuaListFilter2;
+
+        var _filterList2 = function _filterList2(statusList, warnaList) {
+          return semuaList.filter(function (list) {
+            return list.status == statusList && list.warna == warnaList;
+          });
+        };
+
+        if (target.textContent == "Semua Warna") _semuaListFilter2 = semuaList.filter(function (list) {
+          return list.status == "uncompleted";
+        });
+        if (target.textContent == "Kuning") _semuaListFilter2 = _filterList2("uncompleted", "#ffffa9");
+        if (target.textContent == "Hijau") _semuaListFilter2 = _filterList2("uncompleted", "#96f596");
+        if (target.textContent == "Biru") _semuaListFilter2 = _filterList2("uncompleted", "#a3ceff");
+        if (target.textContent == "Hitam") _semuaListFilter2 = _filterList2("uncompleted", "#868686");
+        if (target.textContent == "Abu - abu") _semuaListFilter2 = _filterList2("uncompleted", "#d3d3d3");
+        if (target.textContent == "Putih") _semuaListFilter2 = _filterList2("uncompleted", "#ffffff");
+        tampilkanSemuaList(_semuaListFilter2);
       }
     }
   };
