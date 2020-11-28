@@ -5,11 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _moment = _interopRequireDefault(require("moment"));
-
 var _localStorage = require("./local-storage.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -45,7 +41,6 @@ function toDoListApp() {
   btnTampilkanListContainer.addEventListener("click", function () {
     return tampilkanListContainer();
   });
-  document.querySelector(".date p").textContent = (0, _moment["default"])().startOf("hour").fromNow();
 
   var tampilkanListContainer = function tampilkanListContainer() {
     create.classList.toggle("active");
@@ -70,7 +65,7 @@ function toDoListApp() {
   });
 
   var btnList = function btnList(e) {
-    return "\n\t\t<div class=\"list ".concat(e.warna, " ").concat(e.status, "\" style=\"background-color: ").concat(e.warna, "\">\n\t\t\t<p>").concat(e.isiList, "</p>\n\t\t\t<input>\n\t\t\t<span class=\"date\">").concat((0, _moment["default"])().startOf("hour").fromNow(), "</span>\n\t\t\t<span>\n\t\t\t\t<i class=\"lnr lnr-pencil edit\"></i>\n\t\t\t\t<i class=\"lnr lnr-trash hapus\"></i>\n\t\t\t</span>\n\t\t</div>");
+    return "\n\t\t<div class=\"list ".concat(e.warna, " ").concat(e.status, "\" style=\"background-color: ").concat(e.warna, "\">\n\t\t\t<p>").concat(e.isiList, "</p>\n\t\t\t<input>\n\t\t\t<span>\n\t\t\t\t<i class=\"lnr lnr-pencil edit\"></i>\n\t\t\t\t<i class=\"lnr lnr-trash hapus\"></i>\n\t\t\t</span>\n\t\t</div>");
   };
 
   var tampilkanSemuaList = function tampilkanSemuaList(arr) {
@@ -351,7 +346,7 @@ function toDoListApp() {
           });
         };
 
-        if (target.textContent == "Semua Warna") return tampilkanSemuaList(semuaList);
+        if (target.textContent == "Semua Warna") return;
         if (target.textContent == "Kuning") semuaListFilter = filterList("#ffffa9");
         if (target.textContent == "Hijau") semuaListFilter = filterList("#96f596");
         if (target.textContent == "Biru") semuaListFilter = filterList("#a3ceff");
@@ -393,7 +388,7 @@ function toDoListApp() {
         if (target.textContent == "Kuning") _semuaListFilter2 = _filterList2("uncompleted", "#ffffa9");
         if (target.textContent == "Hijau") _semuaListFilter2 = _filterList2("uncompleted", "#96f596");
         if (target.textContent == "Biru") _semuaListFilter2 = _filterList2("uncompleted", "#a3ceff");
-        if (target.textContent == "Hitam") _semuaListFilter2 = _filterList2("uncompleted", "#6d6d6d");
+        if (target.textContent == "Hitam") _semuaListFilter2 = _filterList2("uncompleted", "#868686");
         if (target.textContent == "Abu - abu") _semuaListFilter2 = _filterList2("uncompleted", "#d3d3d3");
         if (target.textContent == "Putih") _semuaListFilter2 = _filterList2("uncompleted", "#ffffff");
         tampilkanSemuaList(_semuaListFilter2);

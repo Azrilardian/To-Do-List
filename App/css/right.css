@@ -3,6 +3,7 @@
 	position: relative;
 	background: var(--blue-gradient);
 	padding: 10px;
+	overflow: auto;
 }
 
 .right > span {
@@ -146,14 +147,6 @@
 	margin-right: 8px;
 }
 
-.list span.date {
-	font-size: 12px;
-	position: absolute;
-	right: 10px;
-	top: 15;
-	color: #6b6b6b;
-}
-
 .list input {
 	display: none;
 	visibility: hidden;
@@ -175,7 +168,7 @@
 	visibility: visible;
 }
 
-.list:hover span:nth-child(3) {
+.list:hover span:nth-child(2) {
 	display: none;
 }
 

@@ -1,4 +1,3 @@
-import moment from "moment";
 import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage.js";
 function toDoListApp() {
 	const create = document.querySelector(".create");
@@ -24,7 +23,6 @@ function toDoListApp() {
 	*/
 
 	btnTampilkanListContainer.addEventListener("click", () => tampilkanListContainer());
-	document.querySelector(".date p").textContent = moment().startOf("hour").fromNow();
 
 	const tampilkanListContainer = () => {
 		create.classList.toggle("active");
@@ -53,7 +51,6 @@ function toDoListApp() {
 		<div class="list ${e.warna} ${e.status}" style="background-color: ${e.warna}">
 			<p>${e.isiList}</p>
 			<input>
-			<span class="date">${moment().startOf("hour").fromNow()}</span>
 			<span>
 				<i class="lnr lnr-pencil edit"></i>
 				<i class="lnr lnr-trash hapus"></i>
@@ -304,7 +301,7 @@ function toDoListApp() {
 			else if (status == "Semua") {
 				let semuaListFilter;
 				const filterList = (warnaList) => semuaList.filter((list) => list.warna == warnaList);
-				if (target.textContent == "Semua Warna") return tampilkanSemuaList(semuaList);
+				if (target.textContent == "Semua Warna") return;
 				if (target.textContent == "Kuning") semuaListFilter = filterList("#ffffa9");
 				if (target.textContent == "Hijau") semuaListFilter = filterList("#96f596");
 				if (target.textContent == "Biru") semuaListFilter = filterList("#a3ceff");
@@ -330,7 +327,7 @@ function toDoListApp() {
 				if (target.textContent == "Kuning") semuaListFilter = filterList("uncompleted", "#ffffa9");
 				if (target.textContent == "Hijau") semuaListFilter = filterList("uncompleted", "#96f596");
 				if (target.textContent == "Biru") semuaListFilter = filterList("uncompleted", "#a3ceff");
-				if (target.textContent == "Hitam") semuaListFilter = filterList("uncompleted", "#6d6d6d");
+				if (target.textContent == "Hitam") semuaListFilter = filterList("uncompleted", "#868686");
 				if (target.textContent == "Abu - abu") semuaListFilter = filterList("uncompleted", "#d3d3d3");
 				if (target.textContent == "Putih") semuaListFilter = filterList("uncompleted", "#ffffff");
 				tampilkanSemuaList(semuaListFilter);
