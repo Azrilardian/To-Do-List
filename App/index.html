@@ -13,7 +13,7 @@
 			<!-- Awal header -->
 			<header>
 				<div class="side-bar">
-					<span class="close">x</span>
+					<span class="close lnr lnr-cross"></span>
 					<ul class="mt-5 p-0 text-white">
 						<li>Tentang Pembuat</li>
 					</ul>
@@ -48,7 +48,34 @@
 								<span class="opt-select">Belum Selesai</span>
 							</div>
 						</div>
-						<button class="d-flex justify-content-center align-items-center"><span class="">+</span></button>
+						<div class="btn-list-container">
+							<div class="create list-create-btn">
+								<header>
+									<p class="close-icon m-1"><span class="fa fa-close"></span></p>
+								</header>
+								<div class="margin">
+									<div class="input">
+										<p class="m-0">Buat List</p>
+										<input placeholder="Kegiatan hari ini ?" />
+									</div>
+									<div class="dateAndColor d-flex justify-content-between align-items-center">
+										<div class="color d-flex justify-content-between">
+											<span id="yellow"></span>
+											<span id="green"></span>
+											<span id="blue"></span>
+											<span id="red"></span>
+											<span id="black"></span>
+											<span id="white" class="active"></span>
+										</div>
+										<div class="date">
+											<p></p>
+										</div>
+									</div>
+									<button class="buat-list">Create List</button>
+								</div>
+								<span class="btn-add lnr lnr-rocket"></span>
+							</div>
+						</div>
 						<div class="opt two">
 							<span class="opt-selected">Semua Warna</span>
 							<div class="opt-group" id="kategori2">
@@ -72,38 +99,12 @@
 
 			<!-- Awal main -->
 			<main class="mt-5">
-				<div class="row justify-content-center">
+				<div class="row container-overflow overflow-auto justify-content-center">
 					<div class="to-center list-container d-flex flex-wrap align-items-center"></div>
 				</div>
 			</main>
 
 			<!-- Akhir main -->
-
-			<div class="create">
-				<header>
-					<p class="close-icon m-0">x</p>
-				</header>
-				<div class="margin">
-					<div class="input">
-						<p class="m-0">Buat List</p>
-						<input placeholder="Kegiatan hari ini ?" />
-					</div>
-					<div class="dateAndColor d-flex justify-content-between align-items-center">
-						<div class="color d-flex justify-content-between">
-							<span id="yellow"></span>
-							<span id="green"></span>
-							<span id="blue"></span>
-							<span id="red"></span>
-							<span id="black"></span>
-							<span id="white" class="active"></span>
-						</div>
-						<div class="date">
-							<p></p>
-						</div>
-					</div>
-					<button class="buat-list">Create List</button>
-				</div>
-			</div>
 		</div>
 
 		<img src="../App/img/wavesOpacity.svg" alt="" class="waves-bottom" />

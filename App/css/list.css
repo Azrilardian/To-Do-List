@@ -4,13 +4,13 @@
 	display: inline-block;
 	background-color: #fcfcfc;
 	padding: 0 7px;
-	height: 45px;
+	height: 48px;
 	font-size: 14px;
 	z-index: 3;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	filter: drop-shadow(2px 2px 5px #bdbdbd4f);
+	filter: drop-shadow(2px 2px 5px #1b1b1b);
 	cursor: pointer;
 	transition: 0.2s ease;
 	border-radius: 6px;

@@ -41,8 +41,8 @@
 
 .side-bar span.close {
 	color: white;
-	font-size: 40px;
-	font-weight: 300;
+	font-size: 30px;
+	margin-top: 15px;
 	cursor: pointer;
-	margin-right: 27px;
+	margin-right: 20px;
 }

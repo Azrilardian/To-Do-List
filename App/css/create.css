@@ -1,44 +1,51 @@
 input:focus {
 	outline: none;
 }
-.create {
-	position: absolute;
-	top: 30%;
-	left: 50%;
-	transform: translate(-50%, -50%) scale(0.9);
-	width: 400px;
-	background-color: whitesmoke;
-	overflow: hidden;
-	border-radius: 5px;
-	opacity: 0;
-	user-select: none;
-	visibility: hidden;
-	transition: 0.1s ease-in-out;
-	z-index: 999;
-}
-
-.create.active {
-	opacity: 1;
-	visibility: visible;
-	transform: translate(-50%, -50%) scale(1);
-}
 
 .create header {
 	padding: 0 10px;
 	text-align: right;
-	background-color: #ff5050;
+	background-color: #1d3057;
+	display: none;
+	opacity: 0;
+	visibility: hidden;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.create header.active {
+	display: block;
+	opacity: 1;
+	visibility: visible;
 }
 
 .create header p {
-	font-size: 20px;
-	font-weight: 500;
 	display: inline-block;
-	margin-top: -5px;
 	cursor: pointer;
+}
+
+.create header p span {
+	font-weight: 300;
+	font-size: 20px;
+	color: #fc3434;
 }
 
 .create .margin {
 	margin: 20px 10px;
+	display: none;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.create .margin.active {
+	display: inline-block;
+	opacity: 1;
+	visibility: visible;
+}
+
+.create span.btn-add.active {
+	display: none;
+	visibility: hidden;
+	opacity: 0;
 }
 
 .create input {
@@ -59,9 +66,15 @@ input:focus {
 .create .color {
 	justify-content: left;
 }
+
+.create .date {
+	width: 130px;
+	height: 30px;
+}
 .create .date p {
 	width: 100% !important;
 	background-color: white;
+	color: black;
 	padding: 5px;
 	width: 100px;
 	text-align: center;

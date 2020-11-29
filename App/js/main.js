@@ -2,12 +2,13 @@ import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage.js";
 function toDoListApp() {
 	const create = document.querySelector(".create");
 	const input = document.querySelector(".input input");
-	const btnTampilkanListContainer = document.querySelector(".tambah-filter button");
+	const btnTampilkanListContainer = document.querySelector(".tambah-filter .list-create-btn");
 	const listContainer = document.querySelector(".list-container");
 	const listColor = document.querySelectorAll(".color span");
 	let colorName = "#ffffff";
 	let semuaList = [];
 	let listEdit = true;
+	let creating = false;
 
 	// Get Data
 	const List = function (isiList, warna, status = "uncompleted") {
@@ -16,6 +17,7 @@ function toDoListApp() {
 		this.status = status;
 	};
 
+	document.querySelector(".date p").textContent = new Date().toDateString();
 	/*
 	======================================================================================================
 	==========  STATEMENT - STATEMENT YANG BERHUBUNGAN KETIKA TOMBOL BUAT LIST DIKLIK  =================== 
@@ -25,8 +27,17 @@ function toDoListApp() {
 	btnTampilkanListContainer.addEventListener("click", () => tampilkanListContainer());
 
 	const tampilkanListContainer = () => {
-		create.classList.toggle("active");
-		setTimeout(() => input.focus(), 100);
+		setTimeout(() => (creating = true), 300);
+		if (creating) return;
+		else {
+			btnTampilkanListContainer.classList.add("active");
+			setTimeout(() => {
+				btnTampilkanListContainer.children[0].classList.add("active");
+				btnTampilkanListContainer.children[1].classList.add("active");
+				setTimeout(() => input.focus(), 100);
+			}, 300);
+			btnTampilkanListContainer.children[2].classList.add("active");
+		}
 	};
 
 	// Enter Trigger
@@ -37,13 +48,14 @@ function toDoListApp() {
 	});
 
 	// Create List
-	document.addEventListener("click", (e) => {
-		if (e.target.classList.contains("list")) return;
-		else if (e.target.classList.contains("buat-list")) {
-			createList();
-		} else if (e.target.classList.contains("close-icon") || e.target.classList.contains("right")) {
-			closeList();
-		}
+	document.querySelector(".buat-list").addEventListener("click", (e) => {
+		e.stopPropagation();
+		createList();
+	});
+
+	document.querySelector(".close-icon").addEventListener("click", (e) => {
+		e.stopPropagation();
+		closeList();
 	});
 
 	const btnList = (e) => {
@@ -78,8 +90,13 @@ function toDoListApp() {
 	};
 
 	const closeList = () => {
-		create.classList.remove("active");
 		input.value = "";
+		create.classList.remove("active");
+		btnTampilkanListContainer.classList.remove("active");
+		btnTampilkanListContainer.children[0].classList.remove("active");
+		btnTampilkanListContainer.children[1].classList.remove("active");
+		btnTampilkanListContainer.children[2].classList.remove("active");
+		creating = false;
 	};
 
 	const changeListColor = (color) => {
@@ -282,6 +299,7 @@ function toDoListApp() {
 			switch (target.textContent) {
 				case "Semua":
 					tampilkanSemuaList(semuaList);
+					status = "Semua";
 					break;
 				case "Selesai":
 					let listSelesai = semuaList.filter((list) => list.status == "completed");
@@ -306,7 +324,7 @@ function toDoListApp() {
 				if (target.textContent == "Hijau") semuaListFilter = filterList("#b0ffc8");
 				if (target.textContent == "Biru") semuaListFilter = filterList("#b8e1ff");
 				if (target.textContent == "Merah") semuaListFilter = filterList("#ffc6c6");
-				if (target.textContent == "Hitam") semuaListFilter = filterList("#b6b6b63");
+				if (target.textContent == "Hitam") semuaListFilter = filterList("#b6b6b6");
 				if (target.textContent == "Putih") semuaListFilter = filterList("#ffffff");
 				tampilkanSemuaList(semuaListFilter);
 			} else if (status == "Selesai") {
@@ -317,7 +335,7 @@ function toDoListApp() {
 				if (target.textContent == "Hijau") semuaListFilter = filterList("completed", "#b0ffc8");
 				if (target.textContent == "Biru") semuaListFilter = filterList("completed", "#b8e1ff");
 				if (target.textContent == "Merah") semuaListFilter = filterList("completed", "#ffc6c6");
-				if (target.textContent == "Hitam") semuaListFilter = filterList("completed", "#b6b6b63");
+				if (target.textContent == "Hitam") semuaListFilter = filterList("completed", "#b6b6b6");
 				if (target.textContent == "Putih") semuaListFilter = filterList("completed", "#ffffff");
 				tampilkanSemuaList(semuaListFilter);
 			} else if (status == "Belum Selesai") {
@@ -328,7 +346,7 @@ function toDoListApp() {
 				if (target.textContent == "Hijau") semuaListFilter = filterList("uncompleted", "#b0ffc8");
 				if (target.textContent == "Biru") semuaListFilter = filterList("uncompleted", "#b8e1ff");
 				if (target.textContent == "Merah") semuaListFilter = filterList("uncompleted", "#ffc6c6");
-				if (target.textContent == "Hitam") semuaListFilter = filterList("uncompleted", "#b6b6b63");
+				if (target.textContent == "Hitam") semuaListFilter = filterList("uncompleted", "#b6b6b6");
 				if (target.textContent == "Putih") semuaListFilter = filterList("uncompleted", "#ffffff");
 				tampilkanSemuaList(semuaListFilter);
 			}
