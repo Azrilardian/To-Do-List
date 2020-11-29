@@ -2,8 +2,8 @@ import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage.js";
 function toDoListApp() {
 	const create = document.querySelector(".create");
 	const input = document.querySelector(".input input");
-	const btnTampilkanListContainer = document.querySelector(".left button");
-	const right = document.querySelector(".right");
+	const btnTampilkanListContainer = document.querySelector(".tambah-filter button");
+	const listContainer = document.querySelector(".list-container");
 	const listColor = document.querySelectorAll(".color span");
 	let colorName = "#ffffff";
 	let semuaList = [];
@@ -92,19 +92,19 @@ function toDoListApp() {
 		const colorId = color.id;
 		switch (colorId) {
 			case "yellow":
-				changeColor("#ffffa9");
+				changeColor("#f0ffb4");
 				break;
 			case "green":
-				changeColor("#96f596");
+				changeColor("#b0ffc8");
 				break;
 			case "blue":
-				changeColor("#a3ceff");
+				changeColor("#b8e1ff");
+				break;
+			case "red":
+				changeColor("#ffc6c6");
 				break;
 			case "black":
-				changeColor("#868686");
-				break;
-			case "grey":
-				changeColor("#d3d3d3");
+				changeColor("#b6b6b6");
 				break;
 			case "white":
 				changeColor("#ffffff");
@@ -226,7 +226,7 @@ function toDoListApp() {
 		};
 	};
 
-	right.addEventListener("click", (e) => {
+	listContainer.addEventListener("click", (e) => {
 		const target = e.target;
 		if (target.classList.contains("hapus")) removeList(target);
 		if (target.classList.contains("edit")) {
@@ -302,33 +302,33 @@ function toDoListApp() {
 				let semuaListFilter;
 				const filterList = (warnaList) => semuaList.filter((list) => list.warna == warnaList);
 				if (target.textContent == "Semua Warna") return;
-				if (target.textContent == "Kuning") semuaListFilter = filterList("#ffffa9");
-				if (target.textContent == "Hijau") semuaListFilter = filterList("#96f596");
-				if (target.textContent == "Biru") semuaListFilter = filterList("#a3ceff");
-				if (target.textContent == "Hitam") semuaListFilter = filterList("#868686");
-				if (target.textContent == "Abu - abu") semuaListFilter = filterList("#d3d3d3");
+				if (target.textContent == "Kuning") semuaListFilter = filterList("#f0ffb4");
+				if (target.textContent == "Hijau") semuaListFilter = filterList("#b0ffc8");
+				if (target.textContent == "Biru") semuaListFilter = filterList("#b8e1ff");
+				if (target.textContent == "Merah") semuaListFilter = filterList("#ffc6c6");
+				if (target.textContent == "Hitam") semuaListFilter = filterList("#b6b6b63");
 				if (target.textContent == "Putih") semuaListFilter = filterList("#ffffff");
 				tampilkanSemuaList(semuaListFilter);
 			} else if (status == "Selesai") {
 				let semuaListFilter;
 				const filterList = (statusList, warnaList) => semuaList.filter((list) => list.status == statusList && list.warna == warnaList);
 				if (target.textContent == "Semua Warna") semuaListFilter = semuaList.filter((list) => list.status == "completed");
-				if (target.textContent == "Kuning") semuaListFilter = filterList("completed", "#ffffa9");
-				if (target.textContent == "Hijau") semuaListFilter = filterList("completed", "#96f596");
-				if (target.textContent == "Biru") semuaListFilter = filterList("completed", "#a3ceff");
-				if (target.textContent == "Hitam") semuaListFilter = filterList("completed", "#868686");
-				if (target.textContent == "Abu - abu") semuaListFilter = filterList("completed", "#d3d3d3");
+				if (target.textContent == "Kuning") semuaListFilter = filterList("completed", "#f0ffb4");
+				if (target.textContent == "Hijau") semuaListFilter = filterList("completed", "#b0ffc8");
+				if (target.textContent == "Biru") semuaListFilter = filterList("completed", "#b8e1ff");
+				if (target.textContent == "Merah") semuaListFilter = filterList("completed", "#ffc6c6");
+				if (target.textContent == "Hitam") semuaListFilter = filterList("completed", "#b6b6b63");
 				if (target.textContent == "Putih") semuaListFilter = filterList("completed", "#ffffff");
 				tampilkanSemuaList(semuaListFilter);
 			} else if (status == "Belum Selesai") {
 				let semuaListFilter;
 				const filterList = (statusList, warnaList) => semuaList.filter((list) => list.status == statusList && list.warna == warnaList);
 				if (target.textContent == "Semua Warna") semuaListFilter = semuaList.filter((list) => list.status == "uncompleted");
-				if (target.textContent == "Kuning") semuaListFilter = filterList("uncompleted", "#ffffa9");
-				if (target.textContent == "Hijau") semuaListFilter = filterList("uncompleted", "#96f596");
-				if (target.textContent == "Biru") semuaListFilter = filterList("uncompleted", "#a3ceff");
-				if (target.textContent == "Hitam") semuaListFilter = filterList("uncompleted", "#868686");
-				if (target.textContent == "Abu - abu") semuaListFilter = filterList("uncompleted", "#d3d3d3");
+				if (target.textContent == "Kuning") semuaListFilter = filterList("uncompleted", "#f0ffb4");
+				if (target.textContent == "Hijau") semuaListFilter = filterList("uncompleted", "#b0ffc8");
+				if (target.textContent == "Biru") semuaListFilter = filterList("uncompleted", "#b8e1ff");
+				if (target.textContent == "Merah") semuaListFilter = filterList("uncompleted", "#ffc6c6");
+				if (target.textContent == "Hitam") semuaListFilter = filterList("uncompleted", "#b6b6b63");
 				if (target.textContent == "Putih") semuaListFilter = filterList("uncompleted", "#ffffff");
 				tampilkanSemuaList(semuaListFilter);
 			}

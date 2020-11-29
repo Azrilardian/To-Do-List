@@ -18,8 +18,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function toDoListApp() {
   var create = document.querySelector(".create");
   var input = document.querySelector(".input input");
-  var btnTampilkanListContainer = document.querySelector(".left button");
-  var right = document.querySelector(".right");
+  var btnTampilkanListContainer = document.querySelector(".tambah-filter button");
+  var listContainer = document.querySelector(".list-container");
   var listColor = document.querySelectorAll(".color span");
   var colorName = "#ffffff";
   var semuaList = [];
@@ -250,7 +250,7 @@ function toDoListApp() {
     };
   };
 
-  right.addEventListener("click", function (e) {
+  listContainer.addEventListener("click", function (e) {
     var target = e.target;
     if (target.classList.contains("hapus")) removeList(target);
 
