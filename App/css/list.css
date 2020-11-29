@@ -1,106 +1,21 @@
-.right {
-	width: 70%;
-	position: relative;
-	background: var(--blue-gradient);
-	padding: 10px;
-	overflow: auto;
-}
-
-.right > span {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	color: #00000018;
-}
-
-.right p {
-	margin-top: -7px;
-}
-
-.right header {
-	display: flex;
-	margin-bottom: 10px;
-}
-
-.opt span {
-	display: block;
-	padding: 7px;
-	font-size: 14px;
-	font-weight: 500;
-}
-
-.opt {
-	flex: 1;
-	position: relative;
-}
-
-.opt.one {
-	margin-right: 7px;
-}
-
-.opt.three {
-	margin-left: 7px;
-}
-
-.opt-selected {
-	width: 100%;
-	background-color: whitesmoke;
-	cursor: pointer;
-	border-radius: 5px;
-	filter: drop-shadow(2px 2px 5px #bdbdbda4);
-}
-
-.opt-group {
-	position: absolute;
-	border-radius: 5px;
-	top: 45px;
-	width: 100%;
-	background-color: whitesmoke;
-	filter: drop-shadow(2px 2px 5px #bdbdbda4);
-	cursor: pointer;
-	transform: translateY(30px);
-	opacity: 0;
-	visibility: hidden;
-	transition: 0.2s ease-in-out;
-	z-index: 99;
-}
-.opt-group.active {
-	transform: translateY(0);
-	opacity: 1;
-	visibility: visible;
-}
-.opt-select {
-	border-radius: 5px;
-}
-.opt-select:hover {
-	background-color: #a7a7a728;
-}
-
-/*? LIST CONTAINER  */
-
-.list-container {
-	width: 100%;
-}
-
 .list {
 	position: relative;
-	width: 100%;
+	width: 430px;
 	display: inline-block;
-	background-color: #ffffff;
+	background-color: #fcfcfc;
 	padding: 0 7px;
 	height: 45px;
-	margin-bottom: 5px;
 	font-size: 14px;
 	z-index: 3;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	filter: drop-shadow(2px 1px 3px #6b6b6b);
+	filter: drop-shadow(2px 2px 5px #bdbdbd4f);
 	cursor: pointer;
 	transition: 0.2s ease;
 	border-radius: 6px;
+	border: 3px solid white;
+	margin: 10px;
 }
 
 .list.completed {
@@ -182,4 +97,10 @@
 	height: 70%;
 	font-size: 12px;
 	transition: 0.15s ease;
+}
+
+@media screen and (max-width: 992px) {
+	.list {
+		width: 80%;
+	}
 }

@@ -4,62 +4,97 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css" />
+		<script src="https://use.fontawesome.com/a61cd6ec9c.js"></script>
 		<title>To Do List 2</title>
 	</head>
 
 	<body>
 		<div class="container">
-			<div class="left">
-				<button>
-					<span class="lnr lnr-rocket"></span>
-					<p>Dreams Begin</p>
-				</button>
-			</div>
-			<div class="right">
-				<span
-					><h2>To Do List v2</h2>
-					<p>Azrilardian</p></span
-				>
-				<header>
-					<div class="opt one">
-						<span class="opt-selected">Semua</span>
-						<div class="opt-group" id="kategori1">
-							<span class="opt-select">Semua</span>
-							<span class="opt-select">Selesai</span>
-							<span class="opt-select">Belum Selesai</span>
+			<!-- Awal header -->
+			<header>
+				<div class="side-bar">
+					<span class="close">x</span>
+					<ul class="mt-5 p-0 text-white">
+						<li>Tentang Pembuat</li>
+					</ul>
+					<ul class="mt-5 p-0 text-white">
+						<li>
+							<a href="https://www.facebook.com/azril.ardian.1" target="_blank"><i class="fa fa-facebook"></i></a>
+						</li>
+						<li>
+							<a href="https://www.instagram.com/azrilardian_" target="_blank"><i class="fa fa-instagram"></i></a>
+						</li>
+						<li>
+							<a href="https://twitter.com/azrilardian_" target="_blank"><i class="fa fa-twitter"></i></a>
+						</li>
+						<li>
+							<a href="https://wa.me/628814604234" target="_blank"><i class="fa fa-whatsapp"></i></a>
+						</li>
+					</ul>
+				</div>
+
+				<nav class="d-flex justify-content-between align-items-center">
+					<div class="burger open burger-open d-flex flex-column justify-content-around align-items-center mr-3">
+						<span class="burger-open"></span>
+						<span class="burger-open"></span>
+						<span class="burger-open"></span>
+					</div>
+					<div class="tambah-filter d-flex justify-content-between align-items-center">
+						<div class="opt one">
+							<span class="opt-selected">Semua</span>
+							<div class="opt-group" id="kategori1">
+								<span class="opt-select">Semua</span>
+								<span class="opt-select">Selesai</span>
+								<span class="opt-select">Belum Selesai</span>
+							</div>
+						</div>
+						<button class="d-flex justify-content-center align-items-center"><span class="">+</span></button>
+						<div class="opt two">
+							<span class="opt-selected">Semua Warna</span>
+							<div class="opt-group" id="kategori2">
+								<span class="opt-select">Semua Warna</span>
+								<span class="opt-select">Kuning</span>
+								<span class="opt-select">Hijau</span>
+								<span class="opt-select">Biru</span>
+								<span class="opt-select">Merah</span>
+								<span class="opt-select">Hitam</span>
+								<span class="opt-select">Putih</span>
+							</div>
 						</div>
 					</div>
-					<div class="opt two">
-						<span class="opt-selected">Semua Warna</span>
-						<div class="opt-group" id="kategori2">
-							<span class="opt-select">Semua Warna</span>
-							<span class="opt-select">Kuning</span>
-							<span class="opt-select">Hijau</span>
-							<span class="opt-select">Biru</span>
-							<span class="opt-select">Hitam</span>
-							<span class="opt-select">Abu - abu</span>
-							<span class="opt-select">Putih</span>
-						</div>
+					<div class="foto ml-3">
+						<img src="../App/img/profile.jpg" alt="foto-pengguna" />
 					</div>
-				</header>
-				<div class="list-container"></div>
-			</div>
+				</nav>
+			</header>
+
+			<!-- Akhir header -->
+
+			<!-- Awal main -->
+			<main class="mt-5">
+				<div class="row justify-content-center">
+					<div class="to-center list-container d-flex flex-wrap align-items-center"></div>
+				</div>
+			</main>
+
+			<!-- Akhir main -->
+
 			<div class="create">
 				<header>
-					<p class="close-icon">x</p>
+					<p class="close-icon m-0">x</p>
 				</header>
 				<div class="margin">
 					<div class="input">
-						<p>Buat List</p>
+						<p class="m-0">Buat List</p>
 						<input placeholder="Kegiatan hari ini ?" />
 					</div>
-					<div class="dateAndColor">
-						<div class="color">
+					<div class="dateAndColor d-flex justify-content-between align-items-center">
+						<div class="color d-flex justify-content-between">
 							<span id="yellow"></span>
 							<span id="green"></span>
 							<span id="blue"></span>
+							<span id="red"></span>
 							<span id="black"></span>
-							<span id="grey"></span>
 							<span id="white" class="active"></span>
 						</div>
 						<div class="date">
@@ -70,5 +105,9 @@
 				</div>
 			</div>
 		</div>
+
+		<img src="../App/img/wavesOpacity.svg" alt="" class="waves-bottom" />
+
+		<script src="../App/js/sidebar.js"></script>
 	</body>
 </html>
