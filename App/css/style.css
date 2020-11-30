@@ -7,10 +7,6 @@ html body {
 	font-family: "Poppins", sans-serif;
 }
 
-.container {
-	height: 100vh;
-}
-
 .container-overflow::-webkit-scrollbar {
 	width: 0;
 }
@@ -214,8 +210,6 @@ header nav {
 @media screen and (max-width: 420px) {
 	html body {
 		overflow: hidden;
-		padding: 0 !important;
-		margin: 0 !important;
 	}
 	header nav {
 		margin-top: 10px;
