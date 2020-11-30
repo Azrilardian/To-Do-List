@@ -7,6 +7,10 @@ html body {
 	font-family: "Poppins", sans-serif;
 }
 
+.container {
+	height: 100vh;
+}
+
 .container-overflow::-webkit-scrollbar {
 	width: 0;
 }
@@ -174,9 +178,6 @@ header nav {
 }
 
 @media screen and (max-width: 768px) {
-	html body {
-		overflow: hidden;
-	}
 	.tambah-filter {
 		position: absolute;
 		bottom: 5%;
@@ -211,6 +212,14 @@ header nav {
 }
 
 @media screen and (max-width: 420px) {
+	html body {
+		overflow: hidden;
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+	header nav {
+		margin-top: 10px;
+	}
 	.tambah-filter .list-create-btn {
 		transform: translate(-80%, -170%);
 	}
@@ -220,14 +229,19 @@ header nav {
 		transform: translate(-54.3%, -200%);
 	}
 
-	.opt.one {
-		transform: translateX(40px);
+	.tambah-filter {
+		width: fit-content;
 	}
-	.opt.two {
-		transform: translateX(-40px);
+
+	.opt {
+		margin: 0 5px;
 	}
 	.container-overflow {
 		height: 420px;
+	}
+
+	.list-container img {
+		width: 250px;
 	}
 
 	.list-create-btn input {
