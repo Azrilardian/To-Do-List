@@ -104,3 +104,10 @@
 		width: 80%;
 	}
 }
+
+@media screen and (max-width: 420px) {
+	.list {
+		height: 45px;
+		width: 85%;
+	}
+}

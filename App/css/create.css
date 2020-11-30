@@ -132,3 +132,26 @@ input:focus {
 .create button:hover {
 	background-color: #d4d4d4;
 }
+
+@media screen and (max-width: 420px) {
+	.create .color span {
+		width: 25px;
+		height: 25px;
+		margin: 0 3px;
+	}
+	.create .date {
+		background-color: #b6b6b6;
+		height: 25px;
+	}
+	.create .date p {
+		height: 100%;
+		width: 100% !important;
+		background-color: white;
+		color: black;
+		padding: 4px;
+		width: 100px;
+		text-align: center;
+		font-size: 12px;
+		font-weight: 500;
+	}
+}

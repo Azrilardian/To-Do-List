@@ -213,3 +213,27 @@ header nav {
 		transform: translateX(-50px) rotate(180deg);
 	}
 }
+
+@media screen and (max-width: 420px) {
+	.tambah-filter .list-create-btn {
+		transform: translate(-80%, -170%);
+	}
+	.tambah-filter .list-create-btn.active {
+		width: 350px;
+		height: 275px;
+		transform: translate(-54.3%, -200%);
+	}
+
+	.opt.one {
+		transform: translateX(40px);
+	}
+	.opt.two {
+		transform: translateX(-40px);
+	}
+	.list-create-btn input {
+		width: 323px;
+	}
+	.list-create-btn button {
+		width: 323px;
+	}
+}
