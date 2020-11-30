@@ -208,10 +208,6 @@ header nav {
 	.container-overflow {
 		height: 450px;
 	}
-	.waves-bottom {
-		width: 150% !important;
-		transform: translateX(-50px) rotate(180deg);
-	}
 }
 
 @media screen and (max-width: 420px) {
@@ -219,7 +215,7 @@ header nav {
 		transform: translate(-80%, -170%);
 	}
 	.tambah-filter .list-create-btn.active {
-		width: 350px;
+		width: 320px;
 		height: 275px;
 		transform: translate(-54.3%, -200%);
 	}
@@ -230,10 +226,14 @@ header nav {
 	.opt.two {
 		transform: translateX(-40px);
 	}
+	.container-overflow {
+		height: 420px;
+	}
+
 	.list-create-btn input {
-		width: 323px;
+		width: 293px;
 	}
 	.list-create-btn button {
-		width: 323px;
+		width: 293px;
 	}
 }

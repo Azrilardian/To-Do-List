@@ -137,18 +137,23 @@ input:focus {
 	.create .color span {
 		width: 25px;
 		height: 25px;
-		margin: 0 3px;
+		margin: 0 2px;
 	}
+
+	.create .color span:first-child {
+		margin-right: 2px;
+	}
+
 	.create .date {
 		background-color: #b6b6b6;
 		height: 25px;
+		width: 100%;
 	}
 	.create .date p {
 		height: 100%;
-		width: 100% !important;
 		background-color: white;
 		color: black;
-		padding: 4px;
+		padding: 4px 0px;
 		width: 100px;
 		text-align: center;
 		font-size: 12px;
