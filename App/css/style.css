@@ -174,6 +174,9 @@ header nav {
 }
 
 @media screen and (max-width: 768px) {
+	html body {
+		overflow: hidden;
+	}
 	.tambah-filter {
 		position: absolute;
 		bottom: 5%;
@@ -208,9 +211,6 @@ header nav {
 }
 
 @media screen and (max-width: 420px) {
-	html body {
-		overflow: hidden;
-	}
 	header nav {
 		margin-top: 10px;
 	}
