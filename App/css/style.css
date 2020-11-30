@@ -146,6 +146,17 @@ header nav {
 	height: fit-content;
 }
 
+.list-container.nothing-list {
+	height: 400px;
+	justify-content: center;
+}
+
+.list-container img {
+	width: 300px;
+	height: auto;
+	opacity: 0.3;
+}
+
 .waves-bottom {
 	position: absolute;
 	bottom: 0;

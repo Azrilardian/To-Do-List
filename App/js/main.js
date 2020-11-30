@@ -18,6 +18,17 @@ function toDoListApp() {
 	};
 
 	document.querySelector(".date p").textContent = new Date().toDateString();
+
+	const addImgWhenListNothing = () => {
+		if (semuaList.length == 0) {
+			listContainer.classList.add("nothing-list");
+			listContainer.innerHTML = `<img src="../App/img/undraw_complete_task.svg" alt="nothing-list" />`;
+		} else {
+			listContainer.classList.remove("nothing-list");
+		}
+	};
+	addImgWhenListNothing();
+
 	/*
 	======================================================================================================
 	==========  STATEMENT - STATEMENT YANG BERHUBUNGAN KETIKA TOMBOL BUAT LIST DIKLIK  =================== 
@@ -53,6 +64,7 @@ function toDoListApp() {
 		createList();
 	});
 
+	// Close List
 	document.querySelector(".close-icon").addEventListener("click", (e) => {
 		e.stopPropagation();
 		closeList();
@@ -71,8 +83,8 @@ function toDoListApp() {
 	};
 
 	const tampilkanSemuaList = (arr) => {
-		const listContainer = document.querySelector(".list-container");
 		listContainer.textContent = "";
+		listContainer.classList.remove("nothing-list");
 		arr.map((e) => {
 			const button = btnList(e);
 			listContainer.insertAdjacentHTML("beforeend", button);
@@ -203,6 +215,8 @@ function toDoListApp() {
 		let listUpdate = [];
 		semuaList.filter((list) => (list.isiList != isiListDOM ? listUpdate.push(list) : (listUpdate = listUpdate)));
 		semuaList = listUpdate; // Reasiggn Ulang semuaList
+
+		addImgWhenListNothing();
 
 		// Hapus List pada Local Storage
 		syncWithLocalStorage("DELETE", isiListDOM);
