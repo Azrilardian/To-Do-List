@@ -2,6 +2,7 @@ import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage.js";
 function toDoListApp() {
 	const create = document.querySelector(".create");
 	const input = document.querySelector(".input input");
+	const container = document.querySelector(".container");
 	const btnTampilkanListContainer = document.querySelector(".tambah-filter .list-create-btn");
 	const listContainer = document.querySelector(".list-container");
 	const listColor = document.querySelectorAll(".color span");
@@ -40,15 +41,13 @@ function toDoListApp() {
 	const tampilkanListContainer = () => {
 		setTimeout(() => (creating = true), 300);
 		if (creating) return;
-		else {
-			btnTampilkanListContainer.classList.add("active");
-			setTimeout(() => {
-				btnTampilkanListContainer.children[0].classList.add("active");
-				btnTampilkanListContainer.children[1].classList.add("active");
-				setTimeout(() => input.focus(), 100);
-			}, 300);
-			btnTampilkanListContainer.children[2].classList.add("active");
-		}
+		btnTampilkanListContainer.classList.add("active");
+		setTimeout(() => {
+			btnTampilkanListContainer.children[0].classList.add("active");
+			btnTampilkanListContainer.children[1].classList.add("active");
+			setTimeout(() => input.focus(), 100);
+		}, 300);
+		btnTampilkanListContainer.children[2].classList.add("active");
 	};
 
 	// Enter Trigger
@@ -279,25 +278,19 @@ function toDoListApp() {
 	*/
 
 	const aktifasiOption = () => {
-		const optSelected = document.querySelectorAll(".opt-selected");
-		const optGroup = document.querySelectorAll(".opt-group");
-		const optSelect = document.querySelectorAll(".opt-select");
-
-		const hideOpt = () => optGroup.forEach((e) => e.classList.remove("active"));
-
-		optSelected.forEach((e) => {
-			e.addEventListener("click", function () {
-				hideOpt();
-				this.nextElementSibling.classList.toggle("active");
-			});
+		container.addEventListener("click", (e) => {
+			if (e.target.classList.contains("opt-selected")) {
+				const filter = e.target;
+				filter.nextElementSibling.classList.toggle("active");
+			} else if (e.target.classList.contains("opt-select")) {
+				const opt = e.target;
+				opt.parentElement.previousElementSibling.textContent = opt.textContent;
+				opt.parentElement.classList.remove("active");
+			} else {
+				const optGroup = document.querySelectorAll(".opt-group");
+				optGroup.forEach((group) => group.classList.remove("active"));
+			}
 		});
-
-		optSelect.forEach((e) =>
-			e.addEventListener("click", function () {
-				this.parentElement.previousElementSibling.textContent = e.textContent;
-				hideOpt();
-			})
-		);
 	};
 
 	aktifasiOption();

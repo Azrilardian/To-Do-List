@@ -46,6 +46,7 @@ header nav {
 .opt {
 	width: 250px !important;
 	position: relative;
+	user-select: none;
 }
 
 .opt-selected {
@@ -93,15 +94,15 @@ header nav {
 
 .tambah-filter .list-create-btn {
 	margin: 0 15px;
-	border: 3px solid white;
+	border: 2px solid whitesmoke;
 	width: 50px;
 	height: 50px;
-	border-radius: 10px;
-	filter: drop-shadow(2px 2px 5px #bdbdbd4f);
+	border-radius: 7px;
+	filter: drop-shadow(3px 3px 10px #1a1a1a9d);
 	background-color: #334f88;
 	color: white;
 	cursor: pointer;
-	transition: 0.3s ease-in-out;
+	transition: 0.3s ease-out;
 	display: grid;
 	place-items: center;
 	position: absolute;
@@ -113,7 +114,8 @@ header nav {
 	place-items: unset;
 	width: 390px;
 	height: 275px;
-	transform: translate(-50%, 20%);
+	transform: translate(-56%, 20%);
+	cursor: unset;
 }
 
 .tambah-filter button:focus {
@@ -149,6 +151,7 @@ header nav {
 .list-container.nothing-list {
 	height: 400px;
 	justify-content: center;
+	user-select: none;
 }
 
 .list-container img {

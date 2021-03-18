@@ -55,6 +55,13 @@ input:focus {
 	padding-bottom: 60px;
 	border: none;
 	font-size: 14px;
+	border-radius: 5px;
+	background-color: #ffffff;
+	color: #181f2e;
+}
+
+.create input::placeholder {
+	color: #181f2e;
 }
 
 .create .dateAndColor {
@@ -73,13 +80,14 @@ input:focus {
 }
 .create .date p {
 	width: 100% !important;
-	background-color: white;
-	color: black;
+	background-color: #f5f5f569;
+	color: #181f2e;
 	padding: 5px;
 	width: 100px;
 	text-align: center;
 	font-size: 13px;
 	font-weight: 500;
+	border-radius: 5px;
 }
 
 .create .color span {
@@ -87,6 +95,8 @@ input:focus {
 	height: 30px;
 	margin: 0 5px;
 	cursor: pointer;
+	border-radius: 5px;
+	transition: 0.2s ease;
 }
 
 .create .color span:first-child {
@@ -123,14 +133,16 @@ input:focus {
 	width: 100%;
 	padding: 8px 0;
 	margin-top: 10px;
-	background-color: #e0e0e0;
+	background-color: #f5f5f569;
 	border: none;
 	transition: 0.2s ease;
 	font-size: 14px;
+	color: #181f2e;
+	border-radius: 5px;
 }
 
 .create button:hover {
-	background-color: #d4d4d4;
+	background-color: #f5f5f549;
 }
 
 @media screen and (max-width: 420px) {
@@ -145,16 +157,12 @@ input:focus {
 	}
 
 	.create .date {
-		background-color: #b6b6b6;
-		height: 25px;
+		height: 24px;
 		width: 100%;
 	}
 	.create .date p {
 		height: 100%;
-		background-color: white;
-		color: black;
 		padding: 4px 0px;
-		width: 100px;
 		text-align: center;
 		font-size: 12px;
 		font-weight: 500;
