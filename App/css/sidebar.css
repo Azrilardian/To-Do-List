@@ -46,3 +46,9 @@
 	cursor: pointer;
 	margin-right: 28px;
 }
+
+@media screen and (max-width: 400px) {
+	.side-bar {
+		width: 70%;
+	}
+}

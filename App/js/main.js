@@ -113,7 +113,7 @@ function toDoListApp() {
 	const changeListColor = (color) => {
 		const changeColor = (colorHex) => {
 			input.style.backgroundColor = colorHex;
-			colorName = colorHex;
+			colorHex == "#ffffff6c" ? (colorName = "#ffffff") : (colorName = colorHex);
 			input.focus();
 		};
 
@@ -135,7 +135,7 @@ function toDoListApp() {
 				changeColor("#b6b6b6");
 				break;
 			case "white":
-				changeColor("#ffffff");
+				changeColor("#ffffff6c");
 				break;
 		}
 		for (let i = 0; i < listColor.length; i++) listColor[i].classList.remove("active");

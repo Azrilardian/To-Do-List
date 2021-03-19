@@ -15,7 +15,7 @@
 	transition: 0.2s ease;
 	border-radius: 6px;
 	border: 2px solid whitesmoke;
-	margin: 10px;
+	margin: 6px;
 }
 
 .list.completed {
@@ -109,5 +109,11 @@
 	.list {
 		height: 45px;
 		width: 85%;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.list {
+		height: 40px !important;
 	}
 }
