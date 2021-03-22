@@ -2,7 +2,7 @@
 
 ## Apa dan Tujuan
 
-Sebelumnya, saya pernah membuat program To Do List sederhana yang saya bagikan juga disini [ke repo to do list sederhana](), dan ini merupakan pengembangan lebih lanjut dari project tersebut.
+Sebelumnya, saya pernah membuat program To Do List sederhana yang saya bagikan juga disini [Simple To Do List](https://github.com/Azrilardian/Simple-To-Do-List), dan ini merupakan pengembangan lebih lanjut dari project tersebut.
 
 To Do List ini saya buat dengan tujuan untuk mengasah logika pemrograman saya, dalam hal ini spesifik pada bahasa pemrograman Javascript.
 

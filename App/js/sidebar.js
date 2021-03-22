@@ -9,4 +9,5 @@ const sideBarActivation = () => {
 		}
 	});
 };
-sideBarActivation();
+
+export default sideBarActivation;

@@ -12,10 +12,7 @@
 		"url": "git+https://github.com/Azrilardian/To-Do-List.git"
 	},
 	"keywords": [
-		"To",
-		"Do",
-		"List",
-		"2"
+		"To-do-list"
 	],
 	"author": "Azrilardian",
 	"license": "ISC",
@@ -24,17 +21,15 @@
 	},
 	"homepage": "https://github.com/Azrilardian/To-Do-List#readme",
 	"dependencies": {
-		"bootstrap": "^4.5.3",
-		"jquery": "^3.5.1",
-		"moment": "^2.29.0",
-		"popper.js": "^1.16.1"
+		"bootstrap": "^4.5.3"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.11.6",
-		"@babel/preset-env": "^7.11.5",
-		"babel-loader": "^8.1.0",
+		"@babel/core": "^7.13.10",
+		"@babel/preset-env": "^7.13.10",
+		"babel-loader": "^8.2.2",
 		"clean-webpack-plugin": "^3.0.0",
 		"css-loader": "^4.3.0",
+		"file-loader": "^6.2.0",
 		"html-webpack-plugin": "^4.5.0",
 		"mini-css-extract-plugin": "^0.11.3",
 		"optimize-css-assets-webpack-plugin": "^5.0.4",

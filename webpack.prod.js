@@ -1,3 +1,4 @@
+const path = require("path");
 const common = require("./webpack.common.js");
 const { merge } = require("webpack-merge");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -13,14 +14,25 @@ module.exports = merge(common, {
 			{
 				test: /\.js$/,
 				exclude: "/node_modules/",
-				use: [
-					{
-						loader: "babel-loader",
-						options: {
-							presets: ["@babel/preset-env"],
-						},
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ["@babel/preset-env"],
 					},
-				],
+				},
+			},
+			{
+				test: /\.(svg|png|jpg|jpeg)$/,
+				use: {
+					loader: "file-loader",
+					options: {
+						publicPath: (resourcePath, context) => {
+							return path.relative(path.dirname(resourcePath), context) + "";
+						},
+						name: "[name].[ext]",
+						outputPath: "./assets",
+					},
+				},
 			},
 		],
 	},

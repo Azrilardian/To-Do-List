@@ -1,4 +1,5 @@
-import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage.js";
+import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage";
+import sideBarActivation from "./sidebar";
 function toDoListApp() {
 	const create = document.querySelector(".create");
 	const input = document.querySelector(".input input");
@@ -10,6 +11,8 @@ function toDoListApp() {
 	let semuaList = [];
 	let listEdit = true;
 	let creating = false;
+
+	sideBarActivation();
 
 	// Get Data
 	const List = function (isiList, warna, status = "uncompleted") {
