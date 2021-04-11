@@ -12,7 +12,7 @@ input:focus {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
-.create header.active {
+.create header.show {
 	display: block;
 	opacity: 1;
 	visibility: visible;
@@ -36,13 +36,13 @@ input:focus {
 	visibility: hidden;
 }
 
-.create .margin.active {
+.create .margin.show {
 	display: inline-block;
 	opacity: 1;
 	visibility: visible;
 }
 
-.create span.btn-add.active {
+.create span.btn-add.hide {
 	display: none;
 	visibility: hidden;
 	opacity: 0;

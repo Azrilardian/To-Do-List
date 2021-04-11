@@ -109,7 +109,7 @@ header nav {
 	transform: translate(-80%, -50%);
 }
 
-.tambah-filter .list-create-btn.active {
+.tambah-filter .list-create-btn.show {
 	display: unset;
 	place-items: unset;
 	width: 390px;
