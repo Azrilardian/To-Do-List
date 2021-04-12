@@ -9,8 +9,17 @@ function toDoListApp() {
 	const listContainer = document.querySelector(".list-container");
 	const listColors = document.querySelectorAll(".color span");
 	let colorName = "#ffffff";
+	let colors = {
+		yellow: "#f0ffb4",
+		green: "#b0ffc8",
+		blue: "#b8e1ff",
+		red: "#ffc6c6",
+		black: "#b6b6b6",
+		white: "#ffffff6c",
+	};
 	let listArr = [];
 	let listEdit = true;
+	let statusUpdate;
 
 	sideBarActivation();
 
@@ -98,42 +107,23 @@ function toDoListApp() {
 		closeList();
 	});
 
-	const changeListColor = (color) => {
-		let colors = {
-			yellow: "#f0ffb4",
-			green: "#b0ffc8",
-			blue: "#b8e1ff",
-			red: "#ffc6c6",
-			black: "#b6b6b6",
-			white: "#ffffff6c",
-		};
-		const colorId = color.id;
-		const { yellow, green, blue, red, black, white } = colors;
-
-		if ("yellow" === colorId) changeColor(yellow);
-		if ("green" === colorId) changeColor(green);
-		if ("blue" === colorId) changeColor(blue);
-		if ("red" === colorId) changeColor(red);
-		if ("black" === colorId) changeColor(black);
-		if ("white" === colorId) changeColor(white);
-
-		function changeColor(color) {
-			input.style.backgroundColor = color;
-			color === colorName ? (colorName = "#ffffff") : (colorName = color);
-			input.focus();
-		}
-
-		Array.from(listColors).map((clr) => {
-			clr.classList.remove("active");
-			color.classList.add("active");
-		});
-	};
-
 	listColors.forEach((color) =>
 		color.addEventListener("click", () => {
-			changeListColor(color);
+			changeColor(color.id);
+			addBorderWhenUserClickColor(color);
 		})
 	);
+
+	function changeColor(color) {
+		input.style.backgroundColor = colors[color];
+		color === colorName ? (colorName = "#ffffff") : (colorName = colors[color]);
+		input.focus();
+	}
+
+	function addBorderWhenUserClickColor(color) {
+		Array.from(listColors).map((clr) => clr.classList.remove("active"));
+		color.classList.add("active");
+	}
 
 	/*
 	======================================================================================================
@@ -147,35 +137,38 @@ function toDoListApp() {
 	======================================================================================================
 	*/
 
-	//? Document Listener
 	document.addEventListener("click", (e) => {
-		const target = e.target;
-		if (target.classList.contains("list")) {
-			const isiListDOM = target.children[0].textContent.trim();
-			const list = list.find((list) => list.isiList == isiListDOM);
-			const { isiList, warna } = list;
-			let statusUpdate;
+		const list = e.target;
+		const userClickedList = list.classList.contains("list");
+		const listStatusUncompleted = list.classList.contains("uncompleted");
+		const listStatusCompleted = list.classList.contains("completed");
 
-			// Ketika list di klik pada saat belum selesai
-			if (target.classList.contains("uncompleted")) {
-				target.classList.add("completed");
-				target.classList.remove("uncompleted");
-				statusUpdate = "completed";
-				listEdit = false;
-				// Ketika list di klik pada saat sudah selesai
-			} else {
-				target.classList.remove("completed");
-				target.classList.add("uncompleted");
-				statusUpdate = "uncompleted";
-				listEdit = true;
-			}
+		if (userClickedList) {
+			const listText = list.children[0].textContent.trim();
+			const listClicked = listArr.find((ls) => ls.isiList === listText);
+			const { isiList, warna } = listClicked;
 
-			list.find((list) => {
-				if (list.isiList == isiListDOM) list.status = statusUpdate;
-			});
+			if (listStatusUncompleted) listUncompletedStyled(list);
+			if (listStatusCompleted) listCompletedStyled(list);
+
+			listArr.find((list) => (list.isiList === listText ? (list.status = statusUpdate) : (list.status = list.status)));
 			syncWithLocalStorage("UPDATE", isiList, warna, statusUpdate);
 		}
 	});
+
+	function listUncompletedStyled(target) {
+		target.classList.add("completed");
+		target.classList.remove("uncompleted");
+		statusUpdate = "completed";
+		listEdit = false;
+	}
+
+	function listCompletedStyled(target) {
+		target.classList.remove("completed");
+		target.classList.add("uncompleted");
+		statusUpdate = "uncompleted";
+		listEdit = true;
+	}
 
 	/*
 	======================================================================================================
