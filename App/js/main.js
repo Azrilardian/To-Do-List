@@ -18,26 +18,19 @@ function toDoListApp() {
 		white: "#ffffff6c",
 	};
 	let listArr = [];
-	let listEdit = true;
+	let listCanEdit = true;
 	let statusUpdate;
 
 	sideBarActivation();
 
 	// Get Data
-	const List = function (isiList, warna, status = "uncompleted") {
-		this.isiList = isiList;
-		this.warna = warna;
+	const List = function (listText, color, status = "uncompleted") {
+		this.listText = listText;
+		this.color = color;
 		this.status = status;
 	};
 
 	document.querySelector(".date p").textContent = new Date().toDateString();
-
-	const addImgWhenListNothing = () => {
-		if (listArr.length !== 0) return listContainer.classList.remove("nothing-list");
-		listContainer.classList.add("nothing-list");
-		listContainer.innerHTML = `<img src="../App/img/undraw_complete_task.svg" alt="nothing-list" />`;
-	};
-	addImgWhenListNothing();
 
 	/*
 	======================================================================================================
@@ -84,12 +77,12 @@ function toDoListApp() {
 
 	const list = (list) => {
 		return `
-		<div class="list ${list.warna} ${list.status}" style="background-color: ${list.warna}">
-			<p>${list.isiList}</p>
+		<div class="list ${list.color} ${list.status}" style="background-color: ${list.color}">
+			<p>${list.listText}</p>
 			<input>
 			<span>
 				<i class="lnr lnr-pencil edit"></i>
-				<i class="lnr lnr-trash hapus"></i>
+				<i class="lnr lnr-trash remove"></i>
 			</span>
 		</div>`;
 	};
@@ -137,37 +130,39 @@ function toDoListApp() {
 	======================================================================================================
 	*/
 
-	document.addEventListener("click", (e) => {
+	listContainer.addEventListener("click", (e) => {
 		const list = e.target;
 		const userClickedList = list.classList.contains("list");
 		const listStatusUncompleted = list.classList.contains("uncompleted");
 		const listStatusCompleted = list.classList.contains("completed");
 
 		if (userClickedList) {
-			const listText = list.children[0].textContent.trim();
-			const listClicked = listArr.find((ls) => ls.isiList === listText);
-			const { isiList, warna } = listClicked;
-
+			const listDisplayText = list.children[0].textContent.trim();
 			if (listStatusUncompleted) listUncompletedStyled(list);
 			if (listStatusCompleted) listCompletedStyled(list);
-
-			listArr.find((list) => (list.isiList === listText ? (list.status = statusUpdate) : (list.status = list.status)));
-			syncWithLocalStorage("UPDATE", isiList, warna, statusUpdate);
+			updateDataWhenListClicked(listDisplayText);
 		}
 	});
+
+	function updateDataWhenListClicked(listDisplayText) {
+		const listClicked = listArr.find((ls) => ls.listText === listDisplayText);
+		const { listText, warna } = listClicked;
+		listArr.find((list) => (list.listText === listDisplayText ? (list.status = statusUpdate) : list.status));
+		syncWithLocalStorage("UPDATE", listText, warna, statusUpdate);
+	}
 
 	function listUncompletedStyled(target) {
 		target.classList.add("completed");
 		target.classList.remove("uncompleted");
 		statusUpdate = "completed";
-		listEdit = false;
+		listCanEdit = false;
 	}
 
 	function listCompletedStyled(target) {
 		target.classList.remove("completed");
 		target.classList.add("uncompleted");
 		statusUpdate = "uncompleted";
-		listEdit = true;
+		listCanEdit = true;
 	}
 
 	/*
@@ -182,68 +177,71 @@ function toDoListApp() {
 	======================================================================================================
 	*/
 
-	const removeList = (target) => {
-		// Hapus List pada DOM
-		let listDOM = target.parentElement.parentElement; // Ambil .list
-		// Animasi saat dihapus
-		listDOM.classList.add("remove");
-		listDOM.addEventListener("transitionend", () => listDOM.remove());
-
-		// Hapus List pada array semuaList
-		let isiListDOM = listDOM.children[0].textContent.trim();
-		let listUpdate = [];
-		listArr.filter((list) => (list.isiList != isiListDOM ? listUpdate.push(list) : (listUpdate = listUpdate)));
-		listArr = listUpdate; // Reasiggn Ulang semuaList
-
-		addImgWhenListNothing();
-
-		// Hapus List pada Local Storage
-		syncWithLocalStorage("DELETE", isiListDOM);
-	};
-
-	const editList = (target) => {
-		const inputActivation = (target) => {
-			const isiList = target.parentElement.parentElement.children[0].textContent.trim();
-			const inputInList = target.parentElement.parentElement.children[1];
-			inputInList.classList.add("active");
-			inputInList.focus();
-			inputInList.value = isiList;
-			target.parentElement.parentElement.children[0].textContent = "";
-
-			// Enter trigger
-			inputInList.addEventListener("keyup", (e) => {
-				if (e.keyCode === 13) {
-					sinkronListPadaSemuaList(isiList, inputInList.value);
-					inputInList.classList.remove("active");
-				}
-			});
-		};
-		inputActivation(target);
-
-		// Sinkron dengan semuaList
-		const sinkronListPadaSemuaList = (isiListSebelum, isiListSesudah) => {
-			const list = list.filter((list) => {
-				if (list.isiList == isiListSebelum) {
-					list.isiList = isiListSesudah;
-					target.parentElement.parentElement.children[0].textContent = isiListSesudah;
-					return list;
-				}
-			});
-			const { isiList, warna, status } = list[0];
-
-			syncWithLocalStorage("DELETE", isiListSebelum);
-			syncWithLocalStorage("UPDATE", isiList, warna, status);
-		};
-	};
-
 	listContainer.addEventListener("click", (e) => {
-		const target = e.target;
-		if (target.classList.contains("hapus")) removeList(target);
-		if (target.classList.contains("edit")) {
-			if (listEdit == true) editList(target);
-			else if (listEdit == false) return;
+		const button = e.target;
+		const userClickedRemoveBtn = button.classList.contains("remove");
+		const userClickedEditBtn = button.classList.contains("edit");
+		if (userClickedRemoveBtn) removeList(button);
+		if (userClickedEditBtn) {
+			if (!listCanEdit) return;
+			editList(button);
 		}
 	});
+
+	function removeList(target) {
+		let list = target.parentElement.parentElement; // get .list
+		list.classList.add("remove");
+		list.addEventListener("transitionend", () => list.remove());
+		let listDisplayText = list.children[0].textContent.trim();
+		updateDataWhenListRemove(listDisplayText);
+		addImgWhenListNothing();
+		syncWithLocalStorage("DELETE", listDisplayText);
+	}
+
+	function updateDataWhenListRemove(listDisplayText) {
+		let listArrUpdate = [];
+		listArr.filter((list) => (list.listText !== listDisplayText ? listArrUpdate.push(list) : listArrUpdate));
+		listArr = listArrUpdate;
+	}
+
+	function addImgWhenListNothing() {
+		if (listArr.length !== 0) return listContainer.classList.remove("nothing-list");
+		listContainer.classList.add("nothing-list");
+		listContainer.innerHTML = `<img src="../App/img/undraw_complete_task.svg" alt="nothing-list" />`;
+	}
+	addImgWhenListNothing();
+
+	function editList(target) {
+		const list = target.parentElement.parentElement; // get .list
+		let listText = list.children[0].textContent.trim();
+		const input = list.children[1];
+		input.classList.add("show");
+		list.children[0].textContent = "";
+		input.focus();
+		input.value = listText;
+
+		// Enter trigger
+		input.addEventListener("keyup", (e) => {
+			if (e.keyCode === 13) {
+				list.children[0].textContent = input.value;
+				updateDataWhenListEdit(listText, input.value);
+				input.classList.remove("show");
+			}
+		});
+	}
+
+	function updateDataWhenListEdit(listTextBefore, listTextAfter) {
+		const list = listArr.find((list) => {
+			if (list.listText === listTextBefore) {
+				list.listText = listTextAfter;
+				return list;
+			}
+		});
+
+		const { listText, color, status } = list;
+		syncWithLocalStorage("DELETE", listTextBefore);
+		syncWithLocalStorage("UPDATE", listText, color, status);
+	}
 
 	/*
 	======================================================================================================

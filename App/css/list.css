@@ -24,7 +24,6 @@
 
 .list.remove {
 	opacity: 0;
-	transition: 0.2s ease;
 }
 
 .list p {
@@ -78,7 +77,7 @@
 	background-color: transparent;
 	font-family: "Poppins", sans-serif;
 }
-.list input.active {
+.list input.show {
 	display: unset;
 	visibility: visible;
 }
