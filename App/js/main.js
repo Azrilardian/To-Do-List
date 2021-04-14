@@ -8,14 +8,16 @@ function toDoListApp() {
 	const iconCloseList = document.querySelector(".close-icon");
 	const listContainer = document.querySelector(".list-container");
 	const listColors = document.querySelectorAll(".color span");
+	let optionStatusSelected = document.querySelector(".one .opt-selected");
+	let optionColorSelected = document.querySelector(".two .opt-selected");
 	let colorName = "#ffffff";
 	let colors = {
-		yellow: "#f0ffb4",
-		green: "#b0ffc8",
-		blue: "#b8e1ff",
-		red: "#ffc6c6",
-		black: "#b6b6b6",
-		white: "#ffffff6c",
+		Yellow: "#f0ffb4",
+		Green: "#b0ffc8",
+		Blue: "#b8e1ff",
+		Red: "#ffc6c6",
+		Black: "#b6b6b6",
+		White: "#ffffff",
 	};
 	let listArr = [];
 	let listCanEdit = true;
@@ -64,10 +66,48 @@ function toDoListApp() {
 	const createList = () => {
 		if (input.value === "") return;
 		listArr.push(new List(input.value, colorName));
-		showList(listArr);
+		filterListBasedOnStatus(optionStatusSelected.textContent);
+		filterListBasedOnColor(optionColorSelected.textContent);
 		syncWithLocalStorage("ADD", input.value, colorName);
 		closeList();
 	};
+
+	function filterListBasedOnStatus(filterStatus) {
+		const optionGroup = document.getElementById("status-category");
+		if (filterStatus === "Semua") showList(allList(optionColorSelected.textContent));
+		else if (filterStatus === "Selesai") showList(completedList(optionColorSelected.textContent));
+		else {
+			showList(uncompletedList(optionColorSelected.textContent));
+		}
+		optionStatusSelected.textContent = filterStatus;
+		optionGroup.classList.remove("show");
+	}
+
+	function filterListBasedOnColor(filterStatus) {
+		const optionGroup = document.getElementById("color-category");
+		if (optionStatusSelected.textContent === "Semua") showList(allList(filterStatus));
+		else if (optionStatusSelected.textContent === "Selesai") showList(completedList(filterStatus));
+		else {
+			showList(uncompletedList(filterStatus));
+		}
+		optionColorSelected.textContent = filterStatus;
+		optionGroup.classList.remove("show");
+	}
+
+	function allList(optionColorSelected) {
+		if (optionColorSelected === "Semua Warna") return listArr.filter((list) => list.status === "completed" || list.status === "uncompleted");
+		return listArr.filter((list) => (list.status === "completed" || list.status === "uncompleted") && list.color === colors[optionColorSelected]);
+	}
+
+	function completedList(optionColorSelected) {
+		if (optionColorSelected === "Semua Warna") return listArr.filter((list) => list.status === "completed");
+		return listArr.filter((list) => list.status === "completed" && list.color === colors[optionColorSelected]);
+	}
+
+	function uncompletedList(optionColorSelected) {
+		if (optionColorSelected === "Semua Warna") return listArr.filter((list) => list.status === "uncompleted");
+		return listArr.filter((list) => list.status === "uncompleted" && list.color === colors[optionColorSelected]);
+	}
 
 	const showList = (lists) => {
 		listContainer.textContent = "";
@@ -141,14 +181,16 @@ function toDoListApp() {
 			if (listStatusUncompleted) listUncompletedStyled(list);
 			if (listStatusCompleted) listCompletedStyled(list);
 			updateDataWhenListClicked(listDisplayText);
+			filterListBasedOnStatus(optionStatusSelected.textContent);
+			addImgWhenListNothing();
 		}
 	});
 
 	function updateDataWhenListClicked(listDisplayText) {
+		listArr.filter((list) => (list.listText == listDisplayText ? (list.status = statusUpdate) : list.status));
 		const listClicked = listArr.find((ls) => ls.listText === listDisplayText);
-		const { listText, warna } = listClicked;
-		listArr.find((list) => (list.listText === listDisplayText ? (list.status = statusUpdate) : list.status));
-		syncWithLocalStorage("UPDATE", listText, warna, statusUpdate);
+		const { listText, color } = listClicked;
+		syncWithLocalStorage("UPDATE", listText, color, statusUpdate);
 	}
 
 	function listUncompletedStyled(target) {
@@ -255,89 +297,24 @@ function toDoListApp() {
 	======================================================================================================
 	*/
 
-	const aktifasiOption = () => {
-		container.addEventListener("click", (e) => {
-			if (e.target.classList.contains("opt-selected")) {
-				const filter = e.target;
-				filter.nextElementSibling.classList.toggle("active");
-			} else if (e.target.classList.contains("opt-select")) {
-				const opt = e.target;
-				opt.parentElement.previousElementSibling.textContent = opt.textContent;
-				opt.parentElement.classList.remove("active");
-			} else {
-				const optGroup = document.querySelectorAll(".opt-group");
-				optGroup.forEach((group) => group.classList.remove("active"));
-			}
-		});
-	};
-
-	aktifasiOption();
-
-	const urutkanList = () => {
-		let status = "Semua";
-		const kategori1 = document.querySelectorAll("#kategori1");
-		const kategori2 = document.querySelectorAll("#kategori2");
-		kategori1.forEach((e) => e.addEventListener("click", (event) => fillterCompletedUncompleted(event.target)));
-		kategori2.forEach((e) => e.addEventListener("click", (event) => fillterByColor(event.target)));
-
-		function fillterCompletedUncompleted(target) {
-			switch (target.textContent) {
-				case "Semua":
-					showList(listArr);
-					status = "Semua";
-					break;
-				case "Selesai":
-					let listSelesai = listArr.filter((list) => list.status == "completed");
-					showList(listSelesai);
-					status = "Selesai";
-					break;
-				case "Belum Selesai":
-					let listBelumSelesai = listArr.filter((list) => list.status == "uncompleted");
-					showList(listBelumSelesai);
-					status = "Belum Selesai";
-					break;
-			}
+	container.addEventListener("click", (e) => {
+		let userClickCategory = e.target.classList.contains("opt-selected");
+		let userClickCategoryOption = e.target.classList.contains("opt-select");
+		let optionGroup;
+		if (userClickCategory) {
+			optionGroup = e.target.nextElementSibling;
+			optionGroup.classList.toggle("show");
+		} else if (userClickCategoryOption) {
+			const categoryOption = e.target;
+			const optionIsStatusCategory = categoryOption.parentElement.id === "status-category";
+			const optionIsColorCategory = categoryOption.parentElement.id === "color-category";
+			if (optionIsStatusCategory) filterListBasedOnStatus(categoryOption.textContent);
+			if (optionIsColorCategory) filterListBasedOnColor(categoryOption.textContent);
+		} else {
+			optionGroup = document.querySelectorAll(".opt-group");
+			optionGroup.forEach((group) => group.classList.remove("show"));
 		}
-
-		function fillterByColor(target) {
-			if (status == "Semua" && target.textContent == "Semua Warna") showList(listArr);
-			else if (status == "Semua") {
-				let semuaListFilter;
-				const filterList = (warnaList) => listArr.filter((list) => list.warna == warnaList);
-				if (target.textContent == "Semua Warna") return;
-				if (target.textContent == "Kuning") semuaListFilter = filterList("#f0ffb4");
-				if (target.textContent == "Hijau") semuaListFilter = filterList("#b0ffc8");
-				if (target.textContent == "Biru") semuaListFilter = filterList("#b8e1ff");
-				if (target.textContent == "Merah") semuaListFilter = filterList("#ffc6c6");
-				if (target.textContent == "Hitam") semuaListFilter = filterList("#b6b6b6");
-				if (target.textContent == "Putih") semuaListFilter = filterList("#ffffff");
-				showList(semuaListFilter);
-			} else if (status == "Selesai") {
-				let semuaListFilter;
-				const filterList = (statusList, warnaList) => listArr.filter((list) => list.status == statusList && list.warna == warnaList);
-				if (target.textContent == "Semua Warna") semuaListFilter = listArr.filter((list) => list.status == "completed");
-				if (target.textContent == "Kuning") semuaListFilter = filterList("completed", "#f0ffb4");
-				if (target.textContent == "Hijau") semuaListFilter = filterList("completed", "#b0ffc8");
-				if (target.textContent == "Biru") semuaListFilter = filterList("completed", "#b8e1ff");
-				if (target.textContent == "Merah") semuaListFilter = filterList("completed", "#ffc6c6");
-				if (target.textContent == "Hitam") semuaListFilter = filterList("completed", "#b6b6b6");
-				if (target.textContent == "Putih") semuaListFilter = filterList("completed", "#ffffff");
-				showList(semuaListFilter);
-			} else if (status == "Belum Selesai") {
-				let semuaListFilter;
-				const filterList = (statusList, warnaList) => listArr.filter((list) => list.status == statusList && list.warna == warnaList);
-				if (target.textContent == "Semua Warna") semuaListFilter = listArr.filter((list) => list.status == "uncompleted");
-				if (target.textContent == "Kuning") semuaListFilter = filterList("uncompleted", "#f0ffb4");
-				if (target.textContent == "Hijau") semuaListFilter = filterList("uncompleted", "#b0ffc8");
-				if (target.textContent == "Biru") semuaListFilter = filterList("uncompleted", "#b8e1ff");
-				if (target.textContent == "Merah") semuaListFilter = filterList("uncompleted", "#ffc6c6");
-				if (target.textContent == "Hitam") semuaListFilter = filterList("uncompleted", "#b6b6b6");
-				if (target.textContent == "Putih") semuaListFilter = filterList("uncompleted", "#ffffff");
-				showList(semuaListFilter);
-			}
-		}
-	};
-	urutkanList();
+	});
 
 	/*
 	======================================================================================================

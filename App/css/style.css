@@ -54,7 +54,7 @@ header nav {
 	background-color: whitesmoke;
 	cursor: pointer;
 	border-radius: 5px;
-	filter: drop-shadow(2px 2px 5px #bdbdbd4f);
+	filter: drop-shadow(1px 2px 5px #00000054);
 }
 
 .opt-group {
@@ -63,16 +63,16 @@ header nav {
 	top: 45px;
 	width: 100%;
 	background-color: whitesmoke;
-	filter: drop-shadow(2px 2px 5px #bdbdbd4f);
+	filter: drop-shadow(1px 2px 5px #00000054);
 	cursor: pointer;
-	transform: translateY(30px);
+	transform: translateY(5px);
 	opacity: 0;
 	visibility: hidden;
-	transition: 0.2s ease-in-out;
+	transition: 0.2s ease;
 	z-index: 99;
 }
-.opt-group.active {
-	transform: translateY(0);
+.opt-group.show {
+	transform: unset;
 	opacity: 1;
 	visibility: visible;
 }
@@ -128,7 +128,7 @@ header nav {
 	border-radius: 50%;
 	border: 3px solid white;
 	overflow: hidden;
-	filter: drop-shadow(2px 2px 5px #bdbdbd4f);
+	filter: drop-shadow(1px 2px 5px #00000054);
 }
 .foto img {
 	width: 100%;
