@@ -7,8 +7,8 @@
 	background: #334f88;
 	z-index: 9999;
 	padding: 30px;
-	filter: drop-shadow(2px 1px 5px #3f3f3f7c);
-	transition: 0.2s ease-in-out;
+	filter: drop-shadow(2px 1px 5px #00000054);
+	transition: 0.1s ease;
 	transform: translateX(-110%);
 }
 
@@ -29,7 +29,7 @@
 .side-bar ul li {
 	list-style-type: none;
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 400;
 	margin-bottom: 5px;
 	padding: 3px;
 	cursor: pointer;

@@ -117,13 +117,15 @@ function toDoListApp() {
 
 	const list = (list) => {
 		return `
-		<div class="list ${list.color} ${list.status}" style="background-color: ${list.color}">
-			<p>${list.listText}</p>
-			<input>
-			<span>
-				<i class="lnr lnr-pencil edit"></i>
-				<i class="lnr lnr-trash remove"></i>
-			</span>
+		<div class="list col-lg-6 col-sm-12 col-md-12 col-12">
+			<div class="margin my-2 ${list.color} ${list.status}" style="background-color: ${list.color}">
+				<p>${list.listText}</p>
+				<input>
+				<span>
+					<i class="lnr lnr-pencil edit"></i>
+					<i class="lnr lnr-trash remove"></i>
+				</span>
+			</div>
 		</div>`;
 	};
 
@@ -172,10 +174,9 @@ function toDoListApp() {
 
 	listContainer.addEventListener("click", (e) => {
 		const list = e.target;
-		const userClickedList = list.classList.contains("list");
+		const userClickedList = list.classList.contains("margin");
 		const listStatusUncompleted = list.classList.contains("uncompleted");
 		const listStatusCompleted = list.classList.contains("completed");
-
 		if (userClickedList) {
 			const listDisplayText = list.children[0].textContent.trim();
 			if (listStatusUncompleted) listUncompletedStyled(list);
@@ -231,7 +232,7 @@ function toDoListApp() {
 	});
 
 	function removeList(target) {
-		let list = target.parentElement.parentElement; // get .list
+		let list = target.parentElement.parentElement.parentElement; // get .list
 		list.classList.add("remove");
 		list.addEventListener("transitionend", () => list.remove());
 		let listDisplayText = list.children[0].textContent.trim();
