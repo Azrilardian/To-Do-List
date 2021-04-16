@@ -5,7 +5,7 @@ function toDoListApp() {
 	const btnCreateList = document.querySelector(".buat-list");
 	const container = document.querySelector(".container");
 	const btnCreatingList = document.querySelector(".list-create-btn");
-	const iconCloseList = document.querySelector(".close-icon");
+	const iconCloseList = document.querySelector(".fa-close");
 	const listContainer = document.querySelector(".list-container");
 	const listColors = document.querySelectorAll(".color span");
 	let optionStatusSelected = document.querySelector(".one .opt-selected");
@@ -33,7 +33,7 @@ function toDoListApp() {
 		this.id = id;
 	};
 
-	document.querySelector(".date p").textContent = new Date().toDateString();
+	document.querySelector(".date").textContent = new Date().toDateString();
 
 	/*
 	======================================================================================================
@@ -44,7 +44,7 @@ function toDoListApp() {
 	btnCreatingList.addEventListener("click", () => showCreatingList());
 
 	const showCreatingList = () => {
-		const animationDurationEnd = 300;
+		const animationDurationEnd = 200;
 		btnCreatingList.classList.add("show");
 		setTimeout(() => {
 			btnCreatingList.children[0].classList.add("show");
@@ -54,6 +54,7 @@ function toDoListApp() {
 		btnCreatingList.children[2].classList.add("hide");
 	};
 
+	// showCreatingList();
 	// Enter Trigger
 	input.addEventListener("keyup", (e) => {
 		if (e.keyCode === 13) createList();
@@ -304,7 +305,7 @@ function toDoListApp() {
 	======================================================================================================
 	*/
 
-	container.addEventListener("click", (e) => {
+	document.addEventListener("click", (e) => {
 		let userClickCategory = e.target.classList.contains("opt-selected");
 		let userClickCategoryOption = e.target.classList.contains("opt-select");
 		let optionGroup;

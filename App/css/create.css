@@ -1,48 +1,77 @@
+.btn-list-container {
+	position: relative;
+}
+
 input:focus {
 	outline: none;
 }
 
+.create {
+	display: grid;
+	place-items: center;
+	position: absolute;
+	margin: 0 15px;
+	width: 50px;
+	height: 50px;
+	border: 1px solid whitesmoke;
+	background-color: #334f88;
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: 0.2s ease;
+	transform: translate(-80%, -50%);
+	filter: drop-shadow(3px 3px 10px #1a1a1a9d);
+	overflow: hidden;
+}
+
+.create.show {
+	display: unset;
+	place-items: unset;
+	width: max-content;
+	height: max-content;
+	transform: translate(-56%, 20%);
+	cursor: unset;
+}
+
 .create header {
-	padding: 0 10px;
+	padding: 13px 10px;
 	text-align: right;
-	background-color: #1d3057;
+	background-color: #1e345f;
+	width: 100% !important;
 	display: none;
 	opacity: 0;
 	visibility: hidden;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
 }
+
 .create header.show {
 	display: block;
 	opacity: 1;
 	visibility: visible;
 }
 
-.create header p {
-	display: inline-block;
-	cursor: pointer;
-}
-
-.create header p span {
+.create header span {
 	font-weight: 300;
 	font-size: 20px;
 	color: #fc3434;
+	cursor: pointer;
 }
 
 .create .margin {
-	margin: 20px 10px;
+	margin: 20px 30px;
 	display: none;
 	opacity: 0;
 	visibility: hidden;
 }
 
 .create .margin.show {
+	margin: 0;
+	padding: 10px;
 	display: inline-block;
 	opacity: 1;
 	visibility: visible;
 }
 
-.create span.btn-add.hide {
+.create .btn-add.hide {
 	display: none;
 	visibility: hidden;
 	opacity: 0;
@@ -52,7 +81,6 @@ input:focus {
 	padding: 10px;
 	width: 100%;
 	margin: 5px 0 10px 0;
-	padding-bottom: 60px;
 	border: none;
 	font-size: 14px;
 	border-radius: 5px;
@@ -64,45 +92,43 @@ input:focus {
 	color: #181f2e;
 }
 
-.create .dateAndColor {
+.create .date-color {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
 .create .color {
-	justify-content: left;
+	justify-content: space-between;
+	width: 70%;
+	margin-right: 5px;
 }
-
 .create .date {
-	width: 130px;
-	height: 30px;
-}
-.create .date p {
-	width: 100% !important;
 	background-color: #f5f5f569;
 	color: #181f2e;
-	padding: 5px;
+	height: 27px;
 	width: 100px;
 	text-align: center;
-	font-size: 13px;
-	font-weight: 500;
-	border-radius: 5px;
+	font-size: 12px;
+	font-weight: 300;
+	border-radius: 4px;
+	margin: 0;
+	line-height: 27px;
+	padding: 0 5px;
 }
 
 .create .color span {
-	width: 30px;
-	height: 30px;
-	margin: 0 5px;
+	width: 27px;
+	height: 27px;
 	cursor: pointer;
-	border-radius: 5px;
+	border-radius: 4px;
 	transition: 0.2s ease;
+	margin: 3px;
 }
 
 .create .color span:first-child {
 	background-color: #f0ffb4;
-	margin-left: 0;
-	margin-right: 5px;
+	margin-right: 3px;
 }
 
 .create .color span:nth-child(2) {
@@ -143,6 +169,10 @@ input:focus {
 
 .create button:hover {
 	background-color: #f5f5f5b4;
+}
+
+.create button:focus {
+	outline: none;
 }
 
 @media screen and (max-width: 420px) {
