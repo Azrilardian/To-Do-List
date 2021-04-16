@@ -26,10 +26,11 @@ function toDoListApp() {
 	sideBarActivation();
 
 	// Get Data
-	const List = function (listText, color, status = "uncompleted") {
+	const List = function (listText, color, id, status = "uncompleted") {
 		this.listText = listText;
 		this.color = color;
 		this.status = status;
+		this.id = id;
 	};
 
 	document.querySelector(".date p").textContent = new Date().toDateString();
@@ -65,10 +66,10 @@ function toDoListApp() {
 
 	const createList = () => {
 		if (input.value === "") return;
-		listArr.push(new List(input.value, colorName));
+		listArr.push(new List(input.value, colorName, Math.random()));
 		filterListBasedOnStatus(optionStatusSelected.textContent);
 		filterListBasedOnColor(optionColorSelected.textContent);
-		syncWithLocalStorage("ADD", input.value, colorName);
+		syncWithLocalStorage("ADD", input.value, colorName, Math.random());
 		closeList();
 	};
 
@@ -81,6 +82,7 @@ function toDoListApp() {
 		}
 		optionStatusSelected.textContent = filterStatus;
 		optionGroup.classList.remove("show");
+		addImgWhenListNothing();
 	}
 
 	function filterListBasedOnColor(filterStatus) {
@@ -92,7 +94,17 @@ function toDoListApp() {
 		}
 		optionColorSelected.textContent = filterStatus;
 		optionGroup.classList.remove("show");
+		addImgWhenListNothing();
 	}
+
+	function addImgWhenListNothing() {
+		const list = document.querySelector(".list");
+		if (list === null) {
+			listContainer.classList.add("nothing-list");
+			listContainer.innerHTML = `<img src="../App/img/undraw_complete_task.svg" alt="nothing-list" />`;
+		}
+	}
+	addImgWhenListNothing();
 
 	function allList(optionColorSelected) {
 		if (optionColorSelected === "Semua Warna") return listArr.filter((list) => list.status === "completed" || list.status === "uncompleted");
@@ -118,7 +130,7 @@ function toDoListApp() {
 	const list = (list) => {
 		return `
 		<div class="list col-lg-6 col-sm-12 col-md-12 col-12">
-			<div class="margin my-2 ${list.color} ${list.status}" style="background-color: ${list.color}">
+			<div class="margin my-2 ${list.color} ${list.status}" style="background-color: ${list.color}" id=${list.id}>
 				<p>${list.listText}</p>
 				<input>
 				<span>
@@ -181,17 +193,16 @@ function toDoListApp() {
 			const listDisplayText = list.children[0].textContent.trim();
 			if (listStatusUncompleted) listUncompletedStyled(list);
 			if (listStatusCompleted) listCompletedStyled(list);
-			updateDataWhenListClicked(listDisplayText);
+			updateDataWhenListClicked(listDisplayText, list.id);
 			filterListBasedOnStatus(optionStatusSelected.textContent);
-			addImgWhenListNothing();
 		}
 	});
 
-	function updateDataWhenListClicked(listDisplayText) {
-		listArr.filter((list) => (list.listText == listDisplayText ? (list.status = statusUpdate) : list.status));
-		const listClicked = listArr.find((ls) => ls.listText === listDisplayText);
-		const { listText, color } = listClicked;
-		syncWithLocalStorage("UPDATE", listText, color, statusUpdate);
+	function updateDataWhenListClicked(listDisplayText, listId) {
+		listArr.filter((list) => (list.listText == listDisplayText && list.id == listId ? (list.status = statusUpdate) : list.status));
+		const listClicked = listArr.find((ls) => ls.listText == listDisplayText && ls.id == listId);
+		const { listText, color, id } = listClicked;
+		syncWithLocalStorage("UPDATE", listText, color, id, statusUpdate);
 	}
 
 	function listUncompletedStyled(target) {
@@ -234,10 +245,12 @@ function toDoListApp() {
 	function removeList(target) {
 		let list = target.parentElement.parentElement.parentElement; // get .list
 		list.classList.add("remove");
-		list.addEventListener("transitionend", () => list.remove());
+		list.addEventListener("transitionend", () => {
+			list.remove();
+			addImgWhenListNothing();
+		});
 		let listDisplayText = list.children[0].textContent.trim();
 		updateDataWhenListRemove(listDisplayText);
-		addImgWhenListNothing();
 		syncWithLocalStorage("DELETE", listDisplayText);
 	}
 
@@ -246,13 +259,6 @@ function toDoListApp() {
 		listArr.filter((list) => (list.listText !== listDisplayText ? listArrUpdate.push(list) : listArrUpdate));
 		listArr = listArrUpdate;
 	}
-
-	function addImgWhenListNothing() {
-		if (listArr.length !== 0) return listContainer.classList.remove("nothing-list");
-		listContainer.classList.add("nothing-list");
-		listContainer.innerHTML = `<img src="../App/img/undraw_complete_task.svg" alt="nothing-list" />`;
-	}
-	addImgWhenListNothing();
 
 	function editList(target) {
 		const list = target.parentElement.parentElement; // get .list
@@ -334,10 +340,10 @@ function toDoListApp() {
 	if (todoFromLocal) {
 		const todos = JSON.parse(todoFromLocal);
 		for (let key in todos) {
-			const [isiList, warna, status] = todos[key]; // Destructuring value
-			listArr.push(new List(isiList, warna, status)); // Isi kembali array semuaList
+			const [listText, color, id, status] = todos[key]; // Destructuring value
+			listArr.push(new List(listText, color, id, status)); // Isi kembali array semuaList
 			showList(listArr);
-			syncWithLocalStorage("ADD", isiList, warna, status);
+			syncWithLocalStorage("ADD", listText, color, id, status);
 		}
 	}
 
