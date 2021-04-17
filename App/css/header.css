@@ -46,7 +46,7 @@ header nav {
 .opt-group {
 	position: absolute;
 	border-radius: 4px;
-	top: 45px;
+	top: 40px;
 	width: 100%;
 	background-color: #486192;
 	color: white;
@@ -274,9 +274,16 @@ header nav {
 	}
 
 	.opt-group.show {
-		transform: translateY(-107%);
 		opacity: 1;
 		visibility: visible;
+	}
+
+	.opt-group:first-child.show {
+		transform: translateY(-107%);
+	}
+
+	.opt-group:last-child.show {
+		transform: translateY(-101%);
 	}
 
 	.list-create-btn.show {
@@ -315,7 +322,7 @@ header nav {
 	}
 
 	.create.show {
-		transform: translate(-50%, -180%) scale(0.95);
+		transform: translate(-50%, -150%) scale(0.95);
 	}
 
 	.foto {
