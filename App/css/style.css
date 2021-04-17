@@ -67,6 +67,10 @@ main {
 		overflow: hidden;
 	}
 
+	main {
+		margin-top: 30px;
+	}
+
 	.container-overflow {
 		height: 450px;
 	}

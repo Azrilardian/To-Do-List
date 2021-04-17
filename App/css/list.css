@@ -2,13 +2,16 @@
 	transition: 0.2s ease;
 }
 
+.list.remove {
+	opacity: 0;
+}
+
 .list .margin {
 	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 48px;
-	padding: 0 15px;
+	min-height: 45px;
 	z-index: 3;
 	font-size: 13px;
 	filter: drop-shadow(2px 2px 5px #1b1b1b);
@@ -19,7 +22,7 @@
 	transition: 0.2s ease;
 }
 
-.margin.completed {
+.list .margin.completed {
 	opacity: 0.7;
 }
 
@@ -28,17 +31,31 @@
 	opacity: 0.7;
 }
 
-.list.remove {
-	opacity: 0;
+.margin .input p {
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.check {
+	padding: 10px 15px;
+	display: grid;
+	place-items: center;
+}
+
+.check span {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid white;
+	margin: 0 !important;
 }
 
 .list .left {
-	position: relative;
-	width: 80%;
+	width: 75%;
 	height: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
 	pointer-events: none;
 }
 
@@ -52,6 +69,7 @@
 
 .list .left .list-text {
 	pointer-events: none;
+	margin: 10px 0;
 }
 
 .list-text p {
@@ -101,9 +119,8 @@
 	visibility: visible;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 400px) {
 	.list .margin {
-		padding: 0 7px;
-		height: 40px;
+		min-height: 40px;
 	}
 }

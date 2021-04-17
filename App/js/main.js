@@ -1,5 +1,6 @@
 import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage";
 import sideBarActivation from "./sidebar";
+
 function toDoListApp() {
 	const input = document.querySelector(".input input");
 	const btnCreateList = document.querySelector(".buat-list");
@@ -133,14 +134,18 @@ function toDoListApp() {
 		<div class="list col-lg-6 col-sm-12 col-md-12 col-12">
 			<div class="margin my-1 ${list.color} ${list.status}" style="background-color: ${list.color}" id=${list.id}>
 				<div class="left">
-					<span class="check"></span>
+					<div class="check">
+						<span></span>
+					</div>
 					<div class="list-text">
 						<p>${list.listText}</p>
 						<input />
 					</div>
 				</div>
-				<i class="lnr lnr-pencil edit"></i>
-				<i class="lnr lnr-trash remove"></i>
+				<div class="icon">
+					<i class="lnr lnr-pencil edit"></i>
+					<i class="lnr lnr-trash remove"></i>
+				</div>
 			</div>
 		</div>`;
 	};
@@ -239,11 +244,11 @@ function toDoListApp() {
 		const button = e.target;
 		const userClickedRemoveBtn = button.classList.contains("remove");
 		const userClickedEditBtn = button.classList.contains("edit");
-		if (userClickedRemoveBtn) removeList(button);
-		if (userClickedEditBtn) {
-			if (!listCanEdit) return;
-			editList(button);
-		}
+		// if (userClickedRemoveBtn) removeList(button);
+		// if (userClickedEditBtn) {
+		// 	if (!listCanEdit) return;
+		// 	editList(button);
+		// }
 	});
 
 	function removeList(target) {

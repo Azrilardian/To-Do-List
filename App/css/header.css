@@ -11,7 +11,7 @@ header nav {
 
 .burger.open span {
 	width: 60%;
-	height: 4px;
+	height: 3px;
 	background-color: #fff;
 	border-radius: 10px;
 }
@@ -93,7 +93,7 @@ header nav {
 	display: unset;
 	place-items: unset;
 	width: 327px;
-	height: 220px;
+	height: 210px;
 	transform: translate(-50%, 30%);
 	cursor: unset;
 }
