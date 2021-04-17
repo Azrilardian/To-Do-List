@@ -131,13 +131,16 @@ function toDoListApp() {
 	const list = (list) => {
 		return `
 		<div class="list col-lg-6 col-sm-12 col-md-12 col-12">
-			<div class="margin my-2 ${list.color} ${list.status}" style="background-color: ${list.color}" id=${list.id}>
-				<p>${list.listText}</p>
-				<input>
-				<span>
-					<i class="lnr lnr-pencil edit"></i>
-					<i class="lnr lnr-trash remove"></i>
-				</span>
+			<div class="margin my-1 ${list.color} ${list.status}" style="background-color: ${list.color}" id=${list.id}>
+				<div class="left">
+					<span class="check"></span>
+					<div class="list-text">
+						<p>${list.listText}</p>
+						<input />
+					</div>
+				</div>
+				<i class="lnr lnr-pencil edit"></i>
+				<i class="lnr lnr-trash remove"></i>
 			</div>
 		</div>`;
 	};
@@ -191,7 +194,7 @@ function toDoListApp() {
 		const listStatusUncompleted = list.classList.contains("uncompleted");
 		const listStatusCompleted = list.classList.contains("completed");
 		if (userClickedList) {
-			const listDisplayText = list.children[0].textContent.trim();
+			const listDisplayText = list.children[0].children[1].children[0].textContent.trim();
 			if (listStatusUncompleted) listUncompletedStyled(list);
 			if (listStatusCompleted) listCompletedStyled(list);
 			updateDataWhenListClicked(listDisplayText, list.id);

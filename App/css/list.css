@@ -8,18 +8,23 @@
 	justify-content: space-between;
 	align-items: center;
 	height: 48px;
-	padding: 0 7px;
+	padding: 0 15px;
 	z-index: 3;
-	font-size: 14px;
+	font-size: 13px;
 	filter: drop-shadow(2px 2px 5px #1b1b1b);
+	background-color: #479e9828;
 	border-radius: 4px;
 	color: white;
-	border: 1px solid whitesmoke;
 	cursor: pointer;
 	transition: 0.2s ease;
 }
 
-.list .margin.completed {
+.margin.completed {
+	opacity: 0.7;
+}
+
+.margin.completed .left .list-text p {
+	text-decoration: line-through;
 	opacity: 0.7;
 }
 
@@ -27,17 +32,33 @@
 	opacity: 0;
 }
 
-.list p {
+.list .left {
+	position: relative;
+	width: 80%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	pointer-events: none;
+}
+
+.list .left span {
+	width: 20px;
+	height: 20px;
+	border: 1px solid white;
+	border-radius: 50%;
+	margin-right: 15px;
+}
+
+.list .left .list-text {
+	pointer-events: none;
+}
+
+.list-text p {
 	margin: 0;
 	pointer-events: none;
 }
 
-.margin.completed p {
-	text-decoration: line-through;
-	opacity: 0.7;
-}
-
-.list span,
 .list i {
 	display: flex;
 	justify-content: center;
@@ -48,8 +69,6 @@
 	font-size: 12px;
 	color: white;
 	font-weight: 700;
-	width: 70px;
-	height: 100%;
 	background: linear-gradient(to right, #ce3232, #da3d3d);
 	cursor: pointer;
 	filter: drop-shadow(2px 1px 2px #16161691);
@@ -61,19 +80,20 @@
 	margin-right: 8px;
 }
 
-.list input {
+.list .left input {
 	font-family: "Poppins", sans-serif;
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: 28px;
 	display: none;
 	visibility: hidden;
 	height: 100%;
 	width: 100%;
 	outline: none;
+	color: rgb(255, 255, 255);
 	border: none;
 	padding: 0 7px;
-	font-size: 14px;
+	font-size: 13px;
 	background-color: transparent;
 }
 .list input.show {
@@ -81,30 +101,9 @@
 	visibility: visible;
 }
 
-.list:hover span:nth-child(2) {
-	display: none;
-}
-
-.list:hover span:last-child {
-	opacity: 1 !important;
-}
-
-.list span:last-child {
-	display: flex;
-	opacity: 0;
-	height: 70%;
-	font-size: 12px;
-	transition: 0.15s ease;
-}
-
 @media screen and (max-width: 420px) {
 	.list .margin {
 		padding: 0 7px;
 		height: 40px;
-		font-size: 13px;
-	}
-
-	.list input {
-		font-size: 13px;
 	}
 }
