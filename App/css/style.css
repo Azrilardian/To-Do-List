@@ -6,6 +6,7 @@ html body {
 	background-color: #181f2e;
 	font-family: "Poppins", sans-serif;
 	user-select: none;
+	height: max-content;
 }
 
 .container-overflow::-webkit-scrollbar {
@@ -25,6 +26,7 @@ main {
 	justify-content: start;
 	width: 80%;
 	margin-right: 13px;
+	padding-bottom: 40px;
 }
 
 .list-container.nothing-list {
@@ -73,6 +75,7 @@ main {
 
 	.container-overflow {
 		height: 450px;
+		padding-bottom: 0;
 	}
 
 	.list-container {
@@ -88,10 +91,6 @@ main {
 @media screen and (max-width: 420px) {
 	p {
 		font-size: 13px;
-	}
-
-	.container-overflow {
-		height: 420px;
 	}
 
 	.list-container img {

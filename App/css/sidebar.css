@@ -48,6 +48,28 @@
 	margin-right: 28px;
 }
 
+@media screen and (max-width: 767.5px) {
+	.side-bar span.close {
+		position: absolute;
+		top: 10px;
+		right: 20px;
+		color: white;
+		font-size: 30px;
+		cursor: pointer;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.side-bar span.close {
+		position: absolute;
+		top: 10px;
+		left: 13px;
+		color: white;
+		font-size: 30px;
+		cursor: pointer;
+	}
+}
+
 @media screen and (max-width: 400px) {
 	.side-bar {
 		width: 70%;
