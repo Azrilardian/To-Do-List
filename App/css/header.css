@@ -266,7 +266,7 @@ header nav {
 	}
 
 	.add-filter {
-		position: absolute;
+		position: fixed;
 		bottom: 5%;
 		left: 50%;
 		transform: translateX(-50%);
@@ -333,7 +333,7 @@ header nav {
 
 @media screen and (max-width: 360px) {
 	.create.show {
-		transform: translate(-50%, -180%) scale(0.9);
+		transform: translate(-50%, -150%) scale(0.9);
 	}
 }
 
