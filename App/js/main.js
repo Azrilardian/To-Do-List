@@ -143,12 +143,13 @@ function toDoListApp() {
 					</div>
 				</div>
 				<div class="icon">
-					<i class="lnr lnr-pencil edit"></i>
-					<i class="lnr lnr-trash remove"></i>
 				</div>
 			</div>
 		</div>`;
 	};
+
+	// <i class="lnr lnr-pencil edit"></i>
+	// <i class="lnr lnr-trash remove"></i>
 
 	const closeList = () => {
 		input.value = "";

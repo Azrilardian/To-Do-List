@@ -26,56 +26,56 @@
 							<a href="https://twitter.com/azrilardian_" target="_blank"><i class="fa fa-twitter"></i></a>
 						</li>
 						<li>
-							<a href="https://wa.me/628814604234" target="_blank"><i class="fa fa-whatsapp"></i></a>
+							<a href="https://wa.me/628814604234" target="_blank"><i class="fa fa-what"></i></a>
 						</li>
 					</ul>
 				</div>
 				<nav class="d-flex justify-content-between align-items-center">
-					<div class="burger open burger-open d-flex flex-column justify-content-around align-items-start mr-3">
+					<div class="burger open burger-open d-flex flex-column justify-content-around align-items-start">
 						<span class="burger-open"></span> <span class="burger-open"></span> <span class="burger-open"></span>
 					</div>
-					<div class="tambah-filter d-flex justify-content-between align-items-center">
+					<div class="add-filter d-flex justify-content-between align-items-center">
 						<div class="opt one">
 							<span class="opt-selected">Semua</span>
-							<div class="opt-group" id="kategori1"><span class="opt-select">Semua</span> <span class="opt-select">Selesai</span> <span class="opt-select">Belum Selesai</span></div>
-						</div>
-						<div class="btn-list-container">
-							<div class="create list-create-btn">
-								<header>
-									<p class="close-icon m-1"><span class="fa fa-close"></span></p>
-								</header>
-								<div class="margin">
-									<div class="input">
-										<p class="m-0">Buat List</p>
-										<input placeholder="Kegiatan hari ini ?" />
-									</div>
-									<div class="dateAndColor d-flex justify-content-between align-items-center">
-										<div class="color d-flex justify-content-between">
-											<span id="yellow"></span> <span id="green"></span> <span id="blue"></span> <span id="red"></span> <span id="black"></span>
-											<span id="white" class="active"></span>
-										</div>
-										<div class="date"><p></p></div>
-									</div>
-									<button class="buat-list">Create List</button>
-								</div>
-								<span class="btn-add lnr lnr-rocket"></span>
+							<div class="opt-group" id="status-category">
+								<span class="opt-select">Semua</span> <span class="opt-select">Selesai</span> <span class="opt-select">Belum Selesai</span>
 							</div>
+						</div>
+						<div class="create list-create-btn">
+							<header><span class="fa fa-close"></span></header>
+							<div class="margin">
+								<div class="input">
+									<p class="m-0">Create List</p>
+									<input placeholder="Today i want" />
+								</div>
+								<div class="date-color d-flex justify-content-between align-items-center">
+									<div class="color d-flex justify-content-between">
+										<span id="Yellow"></span> <span id="Green"></span> <span id="Blue"></span> <span id="Red"></span> <span id="Purple"></span>
+										<span id="Grey" class="active"></span>
+									</div>
+									<p class="date"></p>
+								</div>
+								<button class="buat-list">Create List</button>
+							</div>
+							<span class="btn-add lnr lnr-rocket"></span>
 						</div>
 						<div class="opt two">
 							<span class="opt-selected">Semua Warna</span>
-							<div class="opt-group" id="kategori2">
-								<span class="opt-select">Semua Warna</span> <span class="opt-select">Kuning</span> <span class="opt-select">Hijau</span> <span class="opt-select">Biru</span>
-								<span class="opt-select">Merah</span> <span class="opt-select">Hitam</span> <span class="opt-select">Putih</span>
+							<div class="opt-group" id="color-category">
+								<span class="opt-select">Semua Warna</span> <span class="opt-select">Yellow</span> <span class="opt-select">Green</span> <span class="opt-select">Blue</span>
+								<span class="opt-select">Red</span> <span class="opt-select">Purple</span> <span class="opt-select">Grey</span>
 							</div>
 						</div>
 					</div>
-					<div class="foto ml-3"><img src="./assets/profile.jpg" alt="foto-pengguna" /></div>
+					<div class="foto ml-3"><img src="./img/profile.jpg" alt="foto-pengguna" /></div>
 				</nav>
 			</header>
-			<main class="mt-5">
-				<div class="row container-overflow overflow-auto justify-content-center"><div class="to-center list-container d-flex flex-wrap align-items-center"></div></div>
+			<main>
+				<div class="row container-overflow overflow-auto justify-content-center">
+					<div class="col d-flex justify-content-center"><div class="list-container d-flex flex-wrap"></div></div>
+				</div>
 			</main>
-			<img src="./assets/wavesOpacity.svg" alt="" class="waves-bottom" />
+			<img src="./img/wavesOpacity.svg" alt="" class="waves-bottom" />
 		</div>
 		<script src="bundle.js"></script>
 	</body>
