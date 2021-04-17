@@ -10,14 +10,14 @@ function toDoListApp() {
 	const listColors = document.querySelectorAll(".color span");
 	let optionStatusSelected = document.querySelector(".one .opt-selected");
 	let optionColorSelected = document.querySelector(".two .opt-selected");
-	let colorName = "#ffffff";
+	let colorName = "#7e7e7e2d";
 	let colors = {
-		Yellow: "#f0ffb4",
-		Green: "#b0ffc8",
-		Blue: "#b8e1ff",
-		Red: "#ffc6c6",
-		Black: "#b6b6b6",
-		White: "#ffffff",
+		Yellow: "#d5dd5e33",
+		Green: "#479e9828",
+		Blue: "#5da5e428",
+		Red: "#e46b672d",
+		Purple: "#e46c8c2c",
+		Grey: "#7e7e7e2d",
 	};
 	let listArr = [];
 	let listCanEdit = true;
@@ -33,7 +33,7 @@ function toDoListApp() {
 		this.id = id;
 	};
 
-	document.querySelector(".date").textContent = new Date().toDateString();
+	document.querySelector(".date").textContent = `${new Date().getDate()} / ${new Date().getMonth()} / ${new Date().getFullYear()}`;
 
 	/*
 	======================================================================================================
@@ -144,10 +144,10 @@ function toDoListApp() {
 
 	const closeList = () => {
 		input.value = "";
-		btnCreatingList.classList.remove("show");
 		btnCreatingList.children[0].classList.remove("show");
 		btnCreatingList.children[1].classList.remove("show");
 		btnCreatingList.children[2].classList.remove("hide");
+		btnCreatingList.classList.remove("show");
 	};
 
 	iconCloseList.addEventListener("click", (e) => {

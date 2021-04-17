@@ -1,22 +1,22 @@
 .list {
 	transition: 0.2s ease;
 }
+
 .list .margin {
 	position: relative;
-	display: inline-block;
-	background-color: #fcfcfc;
-	padding: 0 7px;
-	height: 48px;
-	font-size: 14px;
-	z-index: 3;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	height: 48px;
+	padding: 0 7px;
+	z-index: 3;
+	font-size: 14px;
 	filter: drop-shadow(2px 2px 5px #1b1b1b);
+	border-radius: 4px;
+	color: white;
+	border: 1px solid whitesmoke;
 	cursor: pointer;
 	transition: 0.2s ease;
-	border-radius: 6px;
-	border: 2px solid whitesmoke;
 }
 
 .list .margin.completed {
@@ -25,13 +25,11 @@
 
 .list.remove {
 	opacity: 0;
-	/* background-color: lawngreen !important; */
 }
 
 .list p {
 	margin: 0;
 	pointer-events: none;
-	font-weight: 500;
 }
 
 .margin.completed p {
@@ -64,20 +62,19 @@
 }
 
 .list input {
-	display: none;
-	visibility: hidden;
+	font-family: "Poppins", sans-serif;
 	position: absolute;
 	top: 0;
 	left: 0;
+	display: none;
+	visibility: hidden;
 	height: 100%;
 	width: 100%;
 	outline: none;
 	border: none;
 	padding: 0 7px;
 	font-size: 14px;
-	font-weight: 500;
 	background-color: transparent;
-	font-family: "Poppins", sans-serif;
 }
 .list input.show {
 	display: unset;
@@ -101,14 +98,13 @@
 }
 
 @media screen and (max-width: 420px) {
-	.list {
-		height: 45px;
-		width: 85%;
+	.list .margin {
+		padding: 0 7px;
+		height: 40px;
+		font-size: 13px;
 	}
-}
 
-@media screen and (max-width: 320px) {
-	.list {
-		height: 40px !important;
+	.list input {
+		font-size: 13px;
 	}
 }
