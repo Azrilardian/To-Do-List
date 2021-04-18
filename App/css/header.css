@@ -54,7 +54,7 @@ header nav {
 	transform: translateY(5px);
 	opacity: 0;
 	visibility: hidden;
-	transition: 0.2s ease;
+	transition: 0.2s ease-out;
 	cursor: pointer;
 	overflow: hidden;
 	filter: drop-shadow(1px 2px 5px #00000054);

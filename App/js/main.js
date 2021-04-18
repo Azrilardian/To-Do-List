@@ -135,7 +135,7 @@ function toDoListApp() {
 			<div class="margin my-1 ${list.color} ${list.status}" style="background-color: ${list.color}" id=${list.id}>
 				<div class="left">
 					<div class="check">
-						<span></span>
+						<div><img src="../App/img/check.png" alt="check-icon"></div>
 					</div>
 					<div class="list-text">
 						<p>${list.listText}</p>
@@ -143,8 +143,8 @@ function toDoListApp() {
 					</div>
 				</div>
 				<div class="icon">
-					<span class="lnr lnr-pencil edit"></span>
-					<span class="lnr lnr-trash remove"></span>
+					<i class="fa fa-edit"></i>
+					<i class="fa fa-trash"></i>
 				</div>
 			</div>
 		</div>`;
