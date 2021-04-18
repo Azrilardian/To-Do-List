@@ -143,13 +143,12 @@ function toDoListApp() {
 					</div>
 				</div>
 				<div class="icon">
+					<span class="lnr lnr-pencil edit"></span>
+					<span class="lnr lnr-trash remove"></span>
 				</div>
 			</div>
 		</div>`;
 	};
-
-	// <i class="lnr lnr-pencil edit"></i>
-	// <i class="lnr lnr-trash remove"></i>
 
 	const closeList = () => {
 		input.value = "";
@@ -245,11 +244,11 @@ function toDoListApp() {
 		const button = e.target;
 		const userClickedRemoveBtn = button.classList.contains("remove");
 		const userClickedEditBtn = button.classList.contains("edit");
-		// if (userClickedRemoveBtn) removeList(button);
-		// if (userClickedEditBtn) {
-		// 	if (!listCanEdit) return;
-		// 	editList(button);
-		// }
+		if (userClickedRemoveBtn) removeList(button);
+		if (userClickedEditBtn) {
+			if (!listCanEdit) return;
+			editList(button);
+		}
 	});
 
 	function removeList(target) {
@@ -272,17 +271,17 @@ function toDoListApp() {
 
 	function editList(target) {
 		const list = target.parentElement.parentElement; // get .list
-		let listText = list.children[0].textContent.trim();
-		const input = list.children[1];
+		let listText = list.children[0].children[1].children[0].textContent.trim();
+		const input = list.children[0].children[1].children[1];
 		input.classList.add("show");
-		list.children[0].textContent = "";
+		list.children[0].children[1].children[0].textContent = "";
 		input.focus();
 		input.value = listText;
 
 		// Enter trigger
 		input.addEventListener("keyup", (e) => {
 			if (e.keyCode === 13) {
-				list.children[0].textContent = input.value;
+				list.children[0].children[1].children[0].textContent = input.value;
 				updateDataWhenListEdit(listText, input.value);
 				input.classList.remove("show");
 			}
@@ -291,7 +290,7 @@ function toDoListApp() {
 
 	function updateDataWhenListEdit(listTextBefore, listTextAfter) {
 		const list = listArr.find((list) => {
-			if (list.listText === listTextBefore) {
+			if (list.listText == listTextBefore) {
 				list.listText = listTextAfter;
 				return list;
 			}
