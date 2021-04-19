@@ -1,4 +1,5 @@
 header nav {
+	position: relative;
 	margin-top: 30px;
 	height: 60px;
 }
@@ -247,17 +248,63 @@ header nav {
 }
 
 .foto {
+	position: relative;
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
 	border: 1px solid white;
 	overflow: hidden;
 	filter: drop-shadow(1px 2px 5px #00000054);
+	cursor: pointer;
 }
 
 .foto img {
 	width: 100%;
 	height: 100%;
+}
+
+.profile-option {
+	position: absolute;
+	top: 45px;
+	right: 4px;
+	background-color: #1e345f;
+	border-radius: 4px;
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.2s ease;
+}
+
+.profile-option.show {
+	opacity: 1;
+	visibility: visible;
+}
+
+.profile-option label {
+	position: relative;
+	color: white;
+	font-size: 13px;
+	padding: 7px 15px;
+	width: 100%;
+	height: 100%;
+	margin: 0 !important;
+	cursor: pointer;
+}
+
+.profile-option label::after {
+	content: "";
+	position: absolute;
+	top: -18px;
+	right: 8px;
+	border: 9px solid transparent;
+	border-bottom: 9px solid #1e345f;
+}
+
+.profile-option input {
+	display: none;
+}
+
+.profile-option:hover {
+	background-color: #273d69da;
 }
 
 @media screen and (max-width: 767.5px) {

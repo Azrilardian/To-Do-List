@@ -4,11 +4,11 @@ import sideBarActivation from "./sidebar";
 function toDoListApp() {
 	const input = document.querySelector(".input input");
 	const btnCreateList = document.querySelector(".buat-list");
-	const container = document.querySelector(".container");
 	const btnCreatingList = document.querySelector(".list-create-btn");
 	const iconCloseList = document.querySelector(".fa-close");
 	const listContainer = document.querySelector(".list-container");
 	const listColors = document.querySelectorAll(".color span");
+	const profileOpt = document.querySelector(".profile-option");
 	let optionStatusSelected = document.querySelector(".one .opt-selected");
 	let optionColorSelected = document.querySelector(".two .opt-selected");
 	let colorName = "#7e7e7e2d";
@@ -55,7 +55,6 @@ function toDoListApp() {
 		btnCreatingList.children[2].classList.add("hide");
 	};
 
-	// showCreatingList();
 	// Enter Trigger
 	input.addEventListener("keyup", (e) => {
 		if (e.keyCode === 13) createList();
@@ -66,7 +65,7 @@ function toDoListApp() {
 		createList();
 	});
 
-	const createList = () => {
+	const createList = (e) => {
 		if (input.value === "") return;
 		listArr.push(new List(input.value, colorName, Math.random()));
 		filterListBasedOnStatus(optionStatusSelected.textContent);
@@ -330,6 +329,24 @@ function toDoListApp() {
 			optionGroup = document.querySelectorAll(".opt-group");
 			optionGroup.forEach((group) => group.classList.remove("show"));
 		}
+	});
+
+	/*
+	======================================================================================================
+	=============                                  AKHIR                             ===================== 
+	======================================================================================================
+	*/
+
+	/*
+	======================================================================================================
+	==========      STATEMENT - STATEMENT YANG BERHUBUNGAN DENGAN PROFILE PICTURE      ===================
+	======================================================================================================
+	*/
+
+	document.addEventListener("click", (e) => {
+		const profiePict = e.target.classList.contains("profile-pict");
+		if (!profiePict) return profileOpt.classList.remove("show");
+		profileOpt.classList.toggle("show");
 	});
 
 	/*

@@ -6,7 +6,7 @@ html body {
 	background-color: #181f2e;
 	font-family: "Poppins", sans-serif;
 	user-select: none;
-	height: 100vh;
+	height: 100%;
 }
 
 .container-overflow::-webkit-scrollbar {
@@ -27,6 +27,7 @@ main {
 	width: 80%;
 	margin-right: 13px;
 	padding-bottom: 40px;
+	transition: 0.2s ease;
 }
 
 .list-container.nothing-list {
