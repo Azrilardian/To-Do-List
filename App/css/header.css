@@ -170,7 +170,7 @@ header nav {
 	align-items: center;
 }
 
-.create .color {
+.create .colorss {
 	justify-content: space-between;
 	width: 70%;
 	margin-right: 5px;
@@ -189,7 +189,7 @@ header nav {
 	padding: 0 5px;
 }
 
-.create .color span {
+.create .colors span {
 	width: 27px;
 	height: 27px;
 	cursor: pointer;
@@ -198,32 +198,32 @@ header nav {
 	margin: 3px;
 }
 
-.create .color span:first-child {
+.create .colors span:first-child {
 	background-color: #d5dd5e33;
 	margin-right: 3px;
 }
 
-.create .color span:nth-child(2) {
+.create .colors span:nth-child(2) {
 	background-color: #479e9828;
 }
 
-.create .color span:nth-child(3) {
+.create .colors span:nth-child(3) {
 	background-color: #5da5e428;
 }
 
-.create .color span:nth-child(4) {
+.create .colors span:nth-child(4) {
 	background-color: #e46b672d;
 }
 
-.create .color span:nth-child(5) {
+.create .colors span:nth-child(5) {
 	background-color: #e46c8c2c;
 }
 
-.create .color span:last-child {
+.create .colors span:last-child {
 	background-color: #7e7e7e2d;
 }
 
-.create .color span.active {
+.create .colors span.active {
 	border: 1px solid #292929;
 }
 

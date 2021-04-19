@@ -4,10 +4,10 @@ import sideBarActivation from "./sidebar";
 function toDoListApp() {
 	const input = document.querySelector(".input input");
 	const btnCreateList = document.querySelector(".buat-list");
-	const btnCreatingList = document.querySelector(".list-create-btn");
+	const btnCreatingList = document.querySelector(".create");
 	const iconCloseList = document.querySelector(".fa-close");
 	const listContainer = document.querySelector(".list-container");
-	const listColors = document.querySelectorAll(".color span");
+	const listColors = document.querySelectorAll(".colors span");
 	const profileOpt = document.querySelector(".profile-option");
 	let optionStatusSelected = document.querySelector(".one .opt-selected");
 	let optionColorSelected = document.querySelector(".two .opt-selected");
@@ -42,7 +42,11 @@ function toDoListApp() {
 	======================================================================================================
 	*/
 
-	btnCreatingList.addEventListener("click", () => showCreatingList());
+	document.addEventListener("click", (e) => {
+		const insideCreating = e.target.classList.contains("create") || e.target.classList.contains("inside-creating");
+		if (insideCreating) return showCreatingList();
+		closeList();
+	});
 
 	const showCreatingList = () => {
 		const animationDurationEnd = 200;
@@ -65,7 +69,7 @@ function toDoListApp() {
 		createList();
 	});
 
-	const createList = (e) => {
+	const createList = () => {
 		if (input.value === "") return;
 		listArr.push(new List(input.value, colorName, Math.random()));
 		filterListBasedOnStatus(optionStatusSelected.textContent);
