@@ -1,5 +1,4 @@
 import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage";
-import sideBarActivation from "./sidebar";
 
 function toDoListApp() {
 	const input = document.querySelector(".input input");
@@ -9,6 +8,8 @@ function toDoListApp() {
 	const listContainer = document.querySelector(".list-container");
 	const listColors = document.querySelectorAll(".colors span");
 	const profileOpt = document.querySelector(".profile-option");
+	const sideBar = document.querySelector(".side-bar");
+	const searchInput = document.querySelector(".side-bar input");
 	let optionStatusSelected = document.querySelector(".one .opt-selected");
 	let optionColorSelected = document.querySelector(".two .opt-selected");
 	let colorName = "#7e7e7e2d";
@@ -23,8 +24,6 @@ function toDoListApp() {
 	let listArr = [];
 	let listCanEdit = true;
 	let statusUpdate;
-
-	sideBarActivation();
 
 	// Get Data
 	const List = function (listText, color, id, status = "uncompleted") {
@@ -312,7 +311,7 @@ function toDoListApp() {
 
 	/*
 	======================================================================================================
-	==========          STATEMENT - STATEMENT YANG BERHUBUNGAN DENGAN OPTION           ===================
+	==========          STATEMENT - STATEMENT YANG BERHUBUNGAN DENGAN FILTER           ===================
 	======================================================================================================
 	*/
 
@@ -334,6 +333,38 @@ function toDoListApp() {
 			optionGroup.forEach((group) => group.classList.remove("show"));
 		}
 	});
+
+	/*
+	======================================================================================================
+	=============                                  AKHIR                             ===================== 
+	======================================================================================================
+	*/
+
+	/*
+	======================================================================================================
+	==========          STATEMENT - STATEMENT YANG BERHUBUNGAN DENGAN SIDEBAR          ===================
+	======================================================================================================
+	*/
+
+	document.addEventListener("click", (e) => {
+		if (e.target.classList.contains("burger-open")) sideBar.classList.add("active");
+		else if (e.target.classList.contains("burger-close")) sideBar.classList.remove("active");
+		else if (e.target.classList.contains("side-bar") || e.target.classList.contains("inside")) return;
+		else {
+			sideBar.classList.remove("active");
+		}
+		searchInput.value = null;
+		searchInput.focus();
+	});
+
+	searchInput.addEventListener("keyup", filterList);
+
+	function filterList() {
+		const value = searchInput.value.toUpperCase();
+		const searchList = listArr.filter((list) => list.listText.toUpperCase().indexOf(value) > -1);
+		showList(searchList);
+		addImgWhenListNothing();
+	}
 
 	/*
 	======================================================================================================

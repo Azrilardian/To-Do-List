@@ -40,6 +40,37 @@
 	font-size: 13px;
 }
 
+.side-bar .search {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.side-bar .search input {
+	width: 80%;
+	outline: none;
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid white;
+	color: #c9c9c9;
+	font-size: 13px;
+	padding: 5px 10px;
+}
+
+.side-bar .search input::placeholder {
+	color: #c9c9c9;
+}
+
+.side-bar .search span {
+	width: 20%;
+	padding: 5px 0;
+	font-size: 13px;
+	background-color: transparent;
+	border-bottom: 2px solid white;
+	display: grid;
+	place-items: center;
+}
+
 .side-bar span.close {
 	color: white;
 	font-size: 30px;
