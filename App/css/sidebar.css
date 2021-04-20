@@ -16,6 +16,10 @@
 	transform: translateX(0);
 }
 
+.side-bar ul.one {
+	margin-top: 80px;
+}
+
 .side-bar ul:last-child {
 	position: absolute;
 	bottom: 0;
@@ -61,29 +65,29 @@
 	color: #c9c9c9;
 }
 
-.side-bar .search span {
+.side-bar .search i {
 	width: 20%;
-	padding: 5px 0;
+	padding: 8px 0;
 	font-size: 13px;
-	background-color: transparent;
-	border-bottom: 2px solid white;
 	display: grid;
 	place-items: center;
+	background-color: transparent;
+	border-bottom: 2px solid white;
 }
 
-.side-bar span.close {
+.side-bar i.close {
 	color: white;
-	font-size: 30px;
-	margin-top: 15px;
+	font-size: 40px;
+	margin-top: 10px;
 	cursor: pointer;
-	margin-right: 37px;
+	margin-right: 25px;
 }
 
 @media screen and (max-width: 767.5px) {
-	.side-bar span.close {
+	.side-bar i.close {
 		position: absolute;
-		top: 10px;
-		right: 20px;
+		top: 15px;
+		right: 25px;
 		color: white;
 		font-size: 30px;
 		cursor: pointer;
@@ -91,10 +95,10 @@
 }
 
 @media screen and (max-width: 576px) {
-	.side-bar span.close {
+	.side-bar i.close {
 		position: absolute;
-		top: 10px;
-		left: 13px;
+		top: 16px;
+		left: 14px;
 		color: white;
 		font-size: 30px;
 		cursor: pointer;

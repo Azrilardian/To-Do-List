@@ -4,7 +4,7 @@ function toDoListApp() {
 	const input = document.querySelector(".input input");
 	const btnCreateList = document.querySelector(".buat-list");
 	const btnCreatingList = document.querySelector(".create");
-	const iconCloseList = document.querySelector(".fa-close");
+	const iconCloseList = document.querySelector(".list-close");
 	const listContainer = document.querySelector(".list-container");
 	const listColors = document.querySelectorAll(".colors span");
 	const profileOpt = document.querySelector(".profile-option");
@@ -137,7 +137,7 @@ function toDoListApp() {
 			<div class="margin my-1 ${list.color} ${list.status}" style="background-color: ${list.color}" id=${list.id}>
 				<div class="left">
 					<div class="check">
-						<div><img src="../App/img/check.png" alt="check-icon"></div>
+						<div><i class="bi bi-check2"></i></div>
 					</div>
 					<div class="list-text">
 						<p>${list.listText}</p>
@@ -145,8 +145,8 @@ function toDoListApp() {
 					</div>
 				</div>
 				<div class="icon">
-					<i class="fa fa-edit"></i>
-					<i class="fa fa-trash"></i>
+					<i class="bi bi-pencil-square edit"></i>
+					<i class="bi bi-trash remove"></i>
 				</div>
 			</div>
 		</div>`;
@@ -277,8 +277,10 @@ function toDoListApp() {
 		const input = list.children[0].children[1].children[1];
 		input.classList.add("show");
 		list.children[0].children[1].children[0].textContent = "";
-		input.focus();
 		input.value = listText;
+		setTimeout(() => {
+			input.focus();
+		}, 0);
 
 		// Enter trigger
 		input.addEventListener("keyup", (e) => {

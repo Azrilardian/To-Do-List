@@ -100,7 +100,7 @@ header nav {
 }
 
 .create header {
-	padding: 5px 10px;
+	padding: 0px 10px;
 	text-align: right;
 	background-color: #1e345f;
 	width: 100% !important;
@@ -115,9 +115,9 @@ header nav {
 	visibility: visible;
 }
 
-.create header span {
-	font-weight: 300;
-	font-size: 20px;
+.create header i {
+	font-weight: 400;
+	font-size: 23px;
 	color: #fc3434;
 	cursor: pointer;
 }
@@ -136,6 +136,10 @@ header nav {
 	display: inline-block;
 	opacity: 1;
 	visibility: visible;
+}
+
+.create .btn-add {
+	pointer-events: none;
 }
 
 .create .btn-add.hide {
@@ -170,7 +174,7 @@ header nav {
 	align-items: center;
 }
 
-.create .colorss {
+.create .colors {
 	justify-content: space-between;
 	width: 70%;
 	margin-right: 5px;
@@ -346,6 +350,11 @@ header nav {
 	.opt {
 		width: 150px;
 	}
+
+	.foto {
+		width: 35px;
+		height: 35px;
+	}
 }
 
 @media screen and (max-width: 420px) {
@@ -370,11 +379,6 @@ header nav {
 
 	.create.show {
 		transform: translate(-50%, -150%) scale(0.95);
-	}
-
-	.foto {
-		width: 35px;
-		height: 35px;
 	}
 }
 
