@@ -3,10 +3,10 @@
 	top: 0;
 	left: 0;
 	width: 300px;
-	height: 100vh;
+	height: 100%;
 	background: #334f88;
 	z-index: 9999;
-	padding: 30px;
+	padding: 30px 20px;
 	filter: drop-shadow(2px 1px 5px #00000054);
 	transition: 0.1s ease;
 	transform: translateX(-110%);
@@ -20,7 +20,7 @@
 	margin-top: 80px;
 }
 
-.side-bar ul:last-child {
+.side-bar ul.two {
 	position: absolute;
 	bottom: 0;
 	left: 50%;
@@ -45,9 +45,26 @@
 }
 
 .side-bar .search {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.side-bar .search::before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	width: 0;
+	height: 1.5px;
+	background-color: white;
+	border: 5px;
+	transition: 0.2s ease;
+	transition-delay: 0.08s;
+}
+
+.side-bar .search.show::before {
+	width: 100%;
 }
 
 .side-bar .search input {
@@ -55,7 +72,7 @@
 	outline: none;
 	background-color: transparent;
 	border: none;
-	border-bottom: 2px solid white;
+	/* border-bottom: 2px solid white; */
 	color: #c9c9c9;
 	font-size: 13px;
 	padding: 5px 10px;
@@ -72,36 +89,48 @@
 	display: grid;
 	place-items: center;
 	background-color: transparent;
-	border-bottom: 2px solid white;
+	/* border-bottom: 2px solid white; */
 }
 
-.side-bar i.close {
+.close-circle {
+	position: absolute;
+	top: 40px;
+	right: 48px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: transparent;
+}
+
+.close-circle:focus {
+	background-color: #ffffff1c !important;
+}
+
+.side-bar .close-circle i.close {
 	color: white;
 	font-size: 40px;
-	margin-top: 10px;
+	padding: 5px;
 	cursor: pointer;
-	margin-right: 25px;
 }
 
 @media screen and (max-width: 767.5px) {
-	.side-bar i.close {
+	.side-bar ul.one {
+		margin-top: 40px;
+	}
+
+	.close-circle {
 		position: absolute;
-		top: 15px;
-		right: 25px;
-		color: white;
-		font-size: 30px;
-		cursor: pointer;
+		top: 20px;
+		right: 48px;
 	}
 }
 
 @media screen and (max-width: 576px) {
-	.side-bar i.close {
+	.close-circle {
 		position: absolute;
-		top: 16px;
+		top: 20px;
+		right: unset;
 		left: 14px;
-		color: white;
-		font-size: 30px;
-		cursor: pointer;
 	}
 }
 

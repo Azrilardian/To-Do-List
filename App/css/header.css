@@ -5,13 +5,26 @@ header nav {
 }
 
 .burger {
-	width: 45px;
-	height: 25px;
+	width: 80%;
+	height: 70%;
 	cursor: pointer;
 }
 
+.burger-circle {
+	background-color: transparent;
+	padding: 5px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	transition: 0.2s ease;
+}
+
+.burger-circle:focus {
+	background-color: #ffffff1c !important;
+}
+
 .burger.open span {
-	width: 60%;
+	width: 100%;
 	height: 3px;
 	background-color: #fff;
 	border-radius: 10px;

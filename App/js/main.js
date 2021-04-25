@@ -349,14 +349,19 @@ function toDoListApp() {
 	*/
 
 	document.addEventListener("click", (e) => {
-		if (e.target.classList.contains("burger-open")) sideBar.classList.add("active");
-		else if (e.target.classList.contains("burger-close")) sideBar.classList.remove("active");
-		else if (e.target.classList.contains("side-bar") || e.target.classList.contains("inside")) return;
+		if (e.target.classList.contains("burger-open")) {
+			sideBar.classList.add("active");
+			searchInput.parentElement.classList.add("show");
+			searchInput.value = null;
+			searchInput.focus();
+		} else if (e.target.classList.contains("burger-close")) {
+			sideBar.classList.remove("active");
+			searchInput.parentElement.classList.remove("show");
+		} else if (e.target.classList.contains("side-bar") || e.target.classList.contains("inside")) return;
 		else {
 			sideBar.classList.remove("active");
+			searchInput.parentElement.classList.remove("show");
 		}
-		searchInput.value = null;
-		searchInput.focus();
 	});
 
 	searchInput.addEventListener("keyup", filterList);
