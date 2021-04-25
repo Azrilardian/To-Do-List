@@ -134,17 +134,17 @@ function toDoListApp() {
 	const list = (list) => {
 		return `
 		<div class="list col-lg-6 col-sm-12 col-md-12 col-12">
-			<div class="margin my-1 ${list.color} ${list.status}" style="background-color: ${list.color}" id=${list.id}>
-				<div class="left">
+			<div class="margin d-flex justify-content-between align-items-center position-relative text-white my-1 ${list.color} ${list.status}" style="background-color: ${list.color}" id=${list.id}>
+				<div class="left d-flex align-items-center h-100">
 					<div class="check">
 						<div><i class="bi bi-check2"></i></div>
 					</div>
 					<div class="list-text">
-						<p>${list.listText}</p>
-						<input />
+						<p class="m-0 w-100 position-relative">${list.listText}</p>
+						<input class="position-absolute h-100 text-white m-0" />
 					</div>
 				</div>
-				<div class="icon">
+				<div class="d-flex align-items-center h-100 icon">
 					<i class="bi bi-pencil-square edit"></i>
 					<i class="bi bi-trash remove"></i>
 				</div>

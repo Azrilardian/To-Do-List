@@ -1,9 +1,7 @@
 .side-bar {
-	position: absolute;
 	top: 0;
 	left: 0;
 	width: 300px;
-	height: 100%;
 	background: #334f88;
 	z-index: 9999;
 	padding: 30px 20px;
@@ -21,18 +19,15 @@
 }
 
 .side-bar ul.two {
-	position: absolute;
 	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%);
-	display: flex;
-	justify-content: space-around;
 	width: 70%;
 }
 
 .side-bar ul li {
 	list-style-type: none;
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 400;
 	margin-bottom: 5px;
 	padding: 3px;
@@ -40,15 +35,7 @@
 }
 
 .side-bar ul li a {
-	color: white;
 	font-size: 13px;
-}
-
-.side-bar .search {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 }
 
 .side-bar .search::before {
@@ -72,7 +59,6 @@
 	outline: none;
 	background-color: transparent;
 	border: none;
-	/* border-bottom: 2px solid white; */
 	color: #c9c9c9;
 	font-size: 13px;
 	padding: 5px 10px;
@@ -89,11 +75,9 @@
 	display: grid;
 	place-items: center;
 	background-color: transparent;
-	/* border-bottom: 2px solid white; */
 }
 
 .close-circle {
-	position: absolute;
 	top: 40px;
 	right: 48px;
 	width: 40px;
@@ -107,7 +91,6 @@
 }
 
 .side-bar .close-circle i.close {
-	color: white;
 	font-size: 40px;
 	padding: 5px;
 	cursor: pointer;

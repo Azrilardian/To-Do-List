@@ -7,28 +7,18 @@
 }
 
 .list .margin {
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	min-height: 45px;
 	z-index: 3;
 	font-size: 13px;
 	filter: drop-shadow(2px 2px 5px #1b1b1b);
 	background-color: #479e9828;
 	border-radius: 4px;
-	color: white;
 	cursor: pointer;
 	transition: 0.2s ease;
 }
 
 .margin.completed {
-	transition: 0.2s ease;
 	opacity: 0.7;
-}
-
-.transition {
-	transition: 0.2s ease;
 }
 
 .margin.completed .left .list-text p {
@@ -68,7 +58,6 @@
 	border-radius: 50%;
 	display: grid;
 	place-items: center;
-	transition: 1s ease;
 }
 
 .check div i {
@@ -80,21 +69,18 @@
 
 .list .left {
 	width: 80%;
-	height: 100%;
-	display: flex;
-	align-items: center;
 	pointer-events: none;
 }
 
 .list .left .list-text {
 	pointer-events: none;
 	margin: 10px 0;
+	max-width: 100%;
+	overflow: hidden;
 }
 
 .list-text p {
-	margin: 0;
 	pointer-events: none;
-	position: relative;
 }
 
 .list-text p::before {
@@ -111,18 +97,14 @@
 
 .list .left input {
 	font-family: "Poppins", sans-serif;
-	position: absolute;
 	top: 0;
 	left: 43px;
 	display: none;
 	visibility: hidden;
-	height: 100%;
 	width: 70%;
 	outline: none;
-	color: #ffffff;
 	border: none;
 	padding: 0 7px;
-	margin: 0;
 	font-size: 13px;
 	background-color: transparent;
 }
@@ -134,9 +116,6 @@
 
 .list .icon {
 	width: 20%;
-	height: 100%;
-	display: flex;
-	align-items: center;
 	justify-content: space-evenly;
 	opacity: 0;
 	visibility: hidden;
