@@ -10,6 +10,7 @@ To Do List ini saya buat dengan tujuan untuk mengasah logika pemrograman saya, d
 
 -   Html
 -   Css
+-   Bootstrap
 -   Javascaript
 -   Webpack
 
