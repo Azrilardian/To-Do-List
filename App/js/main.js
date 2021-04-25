@@ -12,6 +12,7 @@ function toDoListApp() {
 	const searchInput = document.querySelector(".side-bar input");
 	let optionStatusSelected = document.querySelector(".one .opt-selected");
 	let optionColorSelected = document.querySelector(".two .opt-selected");
+	const animationDurationEnd = 200;
 	let colorName = "#7e7e7e2d";
 	let colors = {
 		Yellow: "#d5dd5e33",
@@ -48,7 +49,6 @@ function toDoListApp() {
 	});
 
 	const showCreatingList = () => {
-		const animationDurationEnd = 200;
 		btnCreatingList.classList.add("show");
 		setTimeout(() => {
 			btnCreatingList.children[0].classList.add("show");
@@ -205,7 +205,7 @@ function toDoListApp() {
 			if (listStatusUncompleted) listUncompletedStyled(list);
 			if (listStatusCompleted) listCompletedStyled(list);
 			updateDataWhenListClicked(listDisplayText, list.id);
-			filterListBasedOnStatus(optionStatusSelected.textContent);
+			setTimeout(() => filterListBasedOnStatus(optionStatusSelected.textContent), animationDurationEnd);
 		}
 	});
 

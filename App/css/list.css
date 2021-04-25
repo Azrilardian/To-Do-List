@@ -23,17 +23,26 @@
 }
 
 .margin.completed {
+	transition: 0.2s ease;
 	opacity: 0.7;
+}
+
+.transition {
+	transition: 0.2s ease;
 }
 
 .margin.completed .left .list-text p {
-	text-decoration: line-through;
 	opacity: 0.7;
 }
 
-.margin.margin.completed .check div i {
+.margin.completed .left .list-text p::before {
+	width: 100%;
+}
+
+.margin.completed .check div i {
 	opacity: 1;
 	visibility: visible;
+	transform: unset;
 }
 
 .margin:hover .icon {
@@ -59,12 +68,14 @@
 	border-radius: 50%;
 	display: grid;
 	place-items: center;
+	transition: 1s ease;
 }
 
 .check div i {
 	opacity: 0;
 	visibility: hidden;
 	transition: 0.2s ease;
+	transform: translateY(10px);
 }
 
 .list .left {
@@ -83,6 +94,19 @@
 .list-text p {
 	margin: 0;
 	pointer-events: none;
+	position: relative;
+}
+
+.list-text p::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 0;
+	height: 2px;
+	transform: translateY(-50%);
+	background-color: white;
+	transition: 0.2s ease;
 }
 
 .list .left input {
