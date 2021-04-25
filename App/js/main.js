@@ -2,7 +2,7 @@ import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage";
 
 function toDoListApp() {
 	const input = document.querySelector(".input input");
-	const btnCreateList = document.querySelector(".buat-list");
+	const btnCreateList = document.querySelector(".btn-create-list");
 	const btnCreatingList = document.querySelector(".create");
 	const iconCloseList = document.querySelector(".list-close");
 	const listContainer = document.querySelector(".list-container");
