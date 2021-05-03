@@ -21,7 +21,8 @@
 	},
 	"homepage": "https://github.com/Azrilardian/To-Do-List#readme",
 	"dependencies": {
-		"bootstrap": "^4.5.3"
+		"bootstrap": "^4.5.3",
+		"sortablejs": "^1.13.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.13.10",

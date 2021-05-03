@@ -1,4 +1,5 @@
 import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage";
+import Sortable from "sortablejs/modular/sortable.core.esm.js";
 
 function toDoListApp() {
 	const input = document.querySelector(".input input");
@@ -35,6 +36,8 @@ function toDoListApp() {
 	};
 
 	document.querySelector(".date").textContent = `${new Date().getDate()} / ${new Date().getMonth()} / ${new Date().getFullYear()}`;
+
+	const sortable = Sortable.create(listContainer);
 
 	/*
 	======================================================================================================
