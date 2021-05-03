@@ -1,5 +1,7 @@
 import { STORAGE_TODO, syncWithLocalStorage } from "./local-storage";
 import Sortable from "sortablejs/modular/sortable.core.esm.js";
+import nothingImg from "../img/undraw_complete_task.svg";
+import profileImg from "../img/profile.webp";
 
 function toDoListApp() {
 	const input = document.querySelector(".input input");
@@ -108,7 +110,7 @@ function toDoListApp() {
 		const list = document.querySelector(".list");
 		if (list === null) {
 			listContainer.classList.add("nothing-list");
-			listContainer.innerHTML = `<img src="../App/img/undraw_complete_task.svg" alt="nothing-list" />`;
+			listContainer.innerHTML = `<img src=${nothingImg} alt="nothin-img.png" />`;
 		}
 	}
 	addImgWhenListNothing();
